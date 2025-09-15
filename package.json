@@ -1,4 +1,12 @@
 {
+  "name": "pashuvista-monorepo-root",
+  "private": true,
+  "scripts": {
+    "postinstall": "cd PashuVista && npm install",
+    "start": "cd PashuVista && npm run start",
+    "build": "cd PashuVista && npm run build",
+    "test": "cd PashuVista && npm run test"
+  },
   "dependencies": {
     "react-router-dom": "^7.9.1"
   },
