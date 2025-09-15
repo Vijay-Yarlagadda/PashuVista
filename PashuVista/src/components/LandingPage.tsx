@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
+import FindVeterinaryDoctors from './FindVeterinaryDoctors';
 
 const LandingPage: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -66,7 +67,7 @@ const LandingPage: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col md:flex-row items-center justify-center px-4 py-8 md:py-0 md:px-16 mt-20">
         {/* Left Side */}
-        <div className="w-full md:w-1/2 flex flex-col items-start md:pr-12">
+        <div className="w-full md:w-1/2 flex flex-col items-start md:pr-12 mt-24">
           <h1 className="text-8xl md:text-9xl font-semibold text-blue-600 mb-4 leading-tight">PashuVista</h1>
           <h2 className="text-2xl md:text-3xl text-gray-700 mb-4 font-bold">
             Identify cattle breeds instantly using just an image.
@@ -97,6 +98,10 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </main>
+        {/* Find Veterinary Doctors Section below landing page */}
+        <div className="mt-24 mb-16">
+          <FindVeterinaryDoctors />
+        </div>
     </div>
   );
 };
