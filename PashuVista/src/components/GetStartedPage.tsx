@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+const m: any = motion;
 import { MicrophoneIcon, PlusIcon, CameraIcon, PhotoIcon, ArrowLeftIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 
@@ -124,7 +125,7 @@ const GetStartedPage: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center px-4 py-8">
-        <motion.div
+  <m.div
           className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl p-8"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -165,7 +166,7 @@ const GetStartedPage: React.FC = () => {
                 </div>
                 <AnimatePresence>
                   {plusOpen && (
-                    <motion.div
+                    <m.div
                       ref={dropdownRef}
                       className="absolute right-0 top-14 flex flex-col gap-2 bg-white rounded-xl shadow-lg p-3 border border-gray-100 z-10"
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -187,7 +188,7 @@ const GetStartedPage: React.FC = () => {
                         <PhotoIcon className="w-5 h-5 text-blue-500" />
                         <span className="font-medium">Upload</span>
                       </button>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
                 <input
@@ -201,7 +202,7 @@ const GetStartedPage: React.FC = () => {
               
               {/* Send Button */}
               {canSend && (
-                <motion.div 
+                <m.div 
                   className="relative group"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -219,7 +220,7 @@ const GetStartedPage: React.FC = () => {
                     Send message
                     <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </div>
           </div>
@@ -227,7 +228,7 @@ const GetStartedPage: React.FC = () => {
           {/* Suggestions */}
           <div className="w-full flex flex-wrap gap-3 justify-center mb-6">
             {suggestionTags.map((tag, i) => (
-              <motion.button
+              <m.button
                 key={tag}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -235,13 +236,13 @@ const GetStartedPage: React.FC = () => {
                 style={{ fontFamily: 'Google Sans, Arial, sans-serif' }}
               >
                 {tag}
-              </motion.button>
+              </m.button>
             ))}
           </div>
 
           {/* Image Preview */}
           {showPreview && image && (
-            <motion.div
+            <m.div
               className="w-full flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -256,7 +257,7 @@ const GetStartedPage: React.FC = () => {
                   ×
                 </button>
               </div>
-            </motion.div>
+            </m.div>
           )}
 
           {/* Instructions */}
@@ -265,7 +266,7 @@ const GetStartedPage: React.FC = () => {
               Upload a photo of cattle or ask a question to get started with breed identification
             </p>
           </div>
-        </motion.div>
+  </m.div>
       </main>
     </div>
   );

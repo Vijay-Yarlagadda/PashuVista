@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+const m: any = motion;
 
 
 // Space Grotesk font import (add to index.html for global use)
@@ -230,13 +231,13 @@ const FAQPage: React.FC = () => {
               const isActive = activeCategory === categoryId;
               
               return (
-                <motion.li 
+                <m.li 
                   key={cat.category}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
-                  <motion.button
+                  <m.button
                     onClick={() => smoothScrollTo(categoryId)}
                     className={`block w-full text-left px-4 py-3 rounded-lg font-medium text-lg tracking-tight transition-all duration-300 ${
                       isActive 
@@ -247,23 +248,23 @@ const FAQPage: React.FC = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <motion.span
+                    <m.span
                       className="relative"
                       animate={isActive ? { x: 5 } : { x: 0 }}
                       transition={{ duration: 0.2 }}
                     >
                       {cat.category}
                       {isActive && (
-                        <motion.div
+                        <m.div
                           className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-blue-600 rounded-full"
                           initial={{ scaleY: 0 }}
                           animate={{ scaleY: 1 }}
                           transition={{ duration: 0.3 }}
                         />
                       )}
-                    </motion.span>
-                  </motion.button>
-                </motion.li>
+                    </m.span>
+                  </m.button>
+                  </m.li>
               );
             })}
           </ul>
@@ -271,7 +272,7 @@ const FAQPage: React.FC = () => {
         {/* All FAQ Sections */}
         <div className="md:w-3/4 md:pl-12 w-full">
           {faqData.map((cat, categoryIndex) => (
-            <motion.div 
+            <m.div 
               key={cat.category} 
               id={cat.category.replace(/\s+/g, '')} 
               className="mb-16" 
@@ -281,7 +282,7 @@ const FAQPage: React.FC = () => {
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <motion.h2 
+              <m.h2 
                 className="text-4xl font-semibold text-blue-600 mb-8" 
                 style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}
                 initial={{ opacity: 0, x: -20 }}
@@ -290,12 +291,12 @@ const FAQPage: React.FC = () => {
                 viewport={{ once: true }}
               >
                 {cat.category}
-              </motion.h2>
+              </m.h2>
               <div className="space-y-4">
                 {cat.questions.map((item, idx) => {
                   const isOpen = openIndexes[cat.category] === idx;
                   return (
-                    <motion.div 
+                    <m.div 
                       key={item.q} 
                       className="border-b last:border-b-0 bg-transparent" 
                       style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}
@@ -304,19 +305,19 @@ const FAQPage: React.FC = () => {
                       transition={{ duration: 0.4, delay: idx * 0.1 }}
                       viewport={{ once: true }}
                     >
-                      <motion.button
+                      <m.button
                         className={`w-full flex items-center justify-between px-0 py-5 text-2xl font-semibold transition-all duration-300 rounded-lg ${isOpen ? 'text-blue-600 bg-blue-50' : 'text-black hover:bg-gray-50'}`}
                         onClick={() => setOpenIndexes({ ...openIndexes, [cat.category]: isOpen ? null : idx })}
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
                       >
-                        <motion.span
+                        <m.span
                           animate={isOpen ? { x: 5 } : { x: 0 }}
                           transition={{ duration: 0.2 }}
                         >
                           {item.q}
-                        </motion.span>
-                        <motion.svg
+                        </m.span>
+                        <m.svg
                           className={`w-7 h-7 text-gray-400`}
                           fill="none"
                           stroke="currentColor"
@@ -326,18 +327,18 @@ const FAQPage: React.FC = () => {
                           transition={{ duration: 0.3 }}
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </motion.svg>
-                      </motion.button>
+                        </m.svg>
+                      </m.button>
                       <AnimatePresence>
                         {isOpen && (
-                          <motion.div
+                          <m.div
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3, ease: 'easeInOut' }}
                             className="overflow-hidden"
                           >
-                            <motion.div 
+                            <m.div 
                               className="text-lg text-black bg-white rounded-lg px-4 py-4 border border-blue-100 mt-2 shadow-sm"
                               style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}
                               initial={{ y: -10, opacity: 0 }}
@@ -345,15 +346,15 @@ const FAQPage: React.FC = () => {
                               transition={{ duration: 0.2, delay: 0.1 }}
                             >
                               {item.a}
-                            </motion.div>
-                          </motion.div>
+                            </m.div>
+                          </m.div>
                         )}
                       </AnimatePresence>
-                    </motion.div>
+                    </m.div>
                   );
                 })}
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </section>
