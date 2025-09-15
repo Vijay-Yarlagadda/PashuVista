@@ -20,7 +20,7 @@ type MenuItem = {
 const menu: MenuItem[] = [
   { key: 'about', label: 'About Pashuvista', to: '/', Icon: InformationCircleIcon },
   { key: 'faq', label: 'FAQ', to: '/faq', Icon: QuestionMarkCircleIcon },
-  { key: 'breed', label: 'Breed Recognition', to: '/breedrecognition', Icon: CameraIcon },
+  { key: 'breed', label: 'Breed Recognition', to: '/get-started', Icon: CameraIcon },
   { key: 'resources', label: 'Resources', to: '/resources', Icon: BookOpenIcon },
   { key: 'feedback', label: 'Feedback', to: '/feedback', Icon: ChatBubbleBottomCenterTextIcon },
 ];
@@ -97,7 +97,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={onBackdropClick}
           aria-hidden={false}
         >
           {/* Backdrop */}
@@ -107,6 +106,8 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
+            onClick={onBackdropClick}
+            style={{ cursor: 'pointer' }}
           />
 
           {/* Panel */}
