@@ -45,7 +45,7 @@ const LandingPage: React.FC = () => {
               <Bars3Icon className="h-7 w-7 text-black transition-all" />
             </button>
           ) : (
-            <span className="text-6xl font-semibold text-blue-600 transition-all">PashuVista</span>
+            <span className="text-3xl font-semibold text-blue-600 transition-all">PashuVista</span>
           )}
         </div>
         <div className="hidden md:flex items-center space-x-8">
@@ -66,8 +66,8 @@ const LandingPage: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col md:flex-row items-center justify-center px-4 py-8 md:py-0 md:px-16 mt-20">
-        {/* Left Side */}
-        <div className="w-full md:w-1/2 flex flex-col items-start md:pr-12 mt-24">
+  {/* Left Side */}
+  <div className="w-full md:w-1/2 flex flex-col items-start md:pr-12 mt-48">
           <h1 className="text-8xl md:text-9xl font-semibold text-blue-600 mb-4 leading-tight">PashuVista</h1>
           <h2 className="text-2xl md:text-3xl text-gray-700 mb-4 font-bold">
             Identify cattle breeds instantly using just an image.

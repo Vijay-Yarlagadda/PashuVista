@@ -43,10 +43,10 @@ const FindVeterinaryDoctors: React.FC = () => {
   const doctors = locations.find(loc => loc.name === selectedLocation)?.doctors || [];
 
   return (
-    <section className="w-full max-w-3xl mx-auto mt-48 mb-16 px-4">
+  <section className="w-full max-w-3xl mx-auto mt-27 mb-16 px-4">
       <h2
-        className="text-6xl font-bold mb-10"
-        style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', color: '#000', fontWeight: 700 }}
+        className="text-6xl mb-10"
+        style={{ fontFamily: 'Boing SemiBold, Space Grotesk, Arial, sans-serif', color: '#000', fontWeight: 600 }}
       >
         Find Veterinary Doctors
       </h2>
