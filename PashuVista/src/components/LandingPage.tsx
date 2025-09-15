@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
+import Sidebar from './Sidebar';
 
 const LandingPage: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Handle scroll to toggle navbar style
   useEffect(() => {
@@ -16,6 +18,7 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       {/* Navbar */}
       <nav
         className={`
@@ -31,7 +34,15 @@ const LandingPage: React.FC = () => {
       >
         <div className="flex items-center">
           {!scrolled ? (
-            <Bars3Icon className="h-7 w-7 text-black transition-all" />
+            <button
+              type="button"
+              aria-label="Open menu"
+              onClick={() => setSidebarOpen(true)}
+              className="p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-transparent"
+              style={{ background: 'none', border: 'none' }}
+            >
+              <Bars3Icon className="h-7 w-7 text-black transition-all" />
+            </button>
           ) : (
             <span className="text-6xl font-semibold text-blue-600 transition-all">PashuVista</span>
           )}
