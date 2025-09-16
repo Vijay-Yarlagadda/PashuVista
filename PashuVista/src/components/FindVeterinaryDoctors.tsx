@@ -45,8 +45,8 @@ const FindVeterinaryDoctors: React.FC = () => {
   return (
   <section className="w-full max-w-3xl mx-auto mt-27 mb-16 px-4">
       <h2
-        className="text-6xl mb-10"
-        style={{ fontFamily: 'Boing SemiBold, Space Grotesk, Arial, sans-serif', color: '#000', fontWeight: 600 }}
+        className="text-3xl md:text-6xl mb-10 font-bold"
+        style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif', color: '#000', fontWeight: 700 }}
       >
         Find Veterinary Doctors
       </h2>

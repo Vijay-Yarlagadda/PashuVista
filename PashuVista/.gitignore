@@ -30,6 +30,12 @@ coverage/
 *.sublime-workspace
 *.sublime-project
 
+# Ignore translation files
+src/locales/es.json
+src/locales/hi.json
+src/locales/ta.json
+src/locales/en.json
+
 # Optional: lock files (if you want to ignore them)
 # package-lock.json
 yarn.lock

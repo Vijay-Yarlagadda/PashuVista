@@ -8,6 +8,8 @@
     "test": "cd PashuVista && npm run test"
   },
   "dependencies": {
+    "i18next": "^25.5.2",
+    "react-i18next": "^15.7.3",
     "react-router-dom": "^7.9.1"
   },
   "devDependencies": {

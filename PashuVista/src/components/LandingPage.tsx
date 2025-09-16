@@ -68,7 +68,10 @@ const LandingPage: React.FC = () => {
       <main className="flex-1 flex flex-col md:flex-row items-center justify-center px-4 py-8 md:py-0 md:px-16 mt-20">
   {/* Left Side */}
   <div className="w-full md:w-1/2 flex flex-col items-start md:pr-12 mt-48">
-          <h1 className="text-5xl md:text-9xl font-semibold text-blue-600 mb-4 leading-tight">
+          <h1
+            className="text-5xl md:text-9xl font-bold text-blue-600 mb-4 leading-tight"
+            style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif' }}
+          >
             <span className="block md:inline">Pashu</span>
             <span className="block md:inline">Vista</span>
           </h1>
