@@ -13,14 +13,12 @@ const LANGUAGES = [
   { code: 'bn', name: 'Bengali' },
   { code: 'mr', name: 'Marathi' },
   { code: 'or', name: 'Odia' },
-  { code: 'ur', name: 'Urdu' },
+  { code: 'ur', name: 'Urdu' }
 ];
 
-const GOOGLE_LOGO =
-  'https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_light_clr_74x24px.svg';
+const GOOGLE_LOGO = 'https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png';
 
 function suppressGoogleBanner() {
-  // Remove Google Translate banner if it appears
   const interval = setInterval(() => {
     const banner = document.querySelector('iframe.goog-te-banner-frame') as HTMLIFrameElement | null;
     if (banner && banner.style) {
@@ -35,43 +33,22 @@ const LastSection: React.FC = () => {
   const selectRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
-    const w = window as any;
-    if (!w.googleTranslateElementInit) {
-      w.googleTranslateElementInit = function () {
-        new w.google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: LANGUAGES.map(l => l.code).join(','),
-          layout: w.google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false,
-        }, 'google_translate_element_visible');
-      };
-      const script = document.createElement('script');
-      script.src =
-        'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.async = true;
-      document.body.appendChild(script);
-    } else if (w.google && w.google.translate) {
-      w.googleTranslateElementInit();
-    }
     suppressGoogleBanner();
   }, []);
 
-  // Wait for Google Translate widget to be ready
   const triggerTranslation = (lang: string, retries = 0) => {
     const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
     if (select) {
       select.value = lang;
-      select.dispatchEvent(new Event('change'));
+      select.dispatchEvent(new Event('change', { bubbles: true }));
       suppressGoogleBanner();
     } else if (retries < 10) {
       setTimeout(() => triggerTranslation(lang, retries + 1), 300);
     }
   };
 
-  // Custom dropdown handler
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const lang = e.target.value;
-    triggerTranslation(lang);
+    triggerTranslation(e.target.value);
   };
 
   return (
@@ -112,37 +89,31 @@ const LastSection: React.FC = () => {
         >
           Privacy & Terms
         </a>
-        {/* Language Dropdown */}
-        <div className="flex items-center gap-2">
-          <select
-            ref={selectRef}
-            className="border border-gray-300 rounded px-2 py-1 text-gray-700 bg-white text-base focus:outline-none"
-            defaultValue="en"
-            onChange={handleLanguageChange}
-            aria-label="Select language"
-            style={{ minWidth: '110px' }}
-          >
-            {LANGUAGES.map(lang => (
-              <option key={lang.code} value={lang.code}>
-                {lang.name}
-              </option>
-            ))}
-          </select>
-          <img
-            src={GOOGLE_LOGO}
-            alt="Google logo"
-            className="h-6 w-auto ml-2"
-            draggable="false"
-          />
-        </div>
+        {/* Custom Language Dropdown */}
+        <select
+          ref={selectRef}
+          className="border border-gray-300 rounded px-2 py-1 text-gray-700 bg-white text-base focus:outline-none"
+          defaultValue="en"
+          onChange={handleLanguageChange}
+          aria-label="Select language"
+          style={{ minWidth: '110px' }}
+        >
+          {LANGUAGES.map(lang => (
+            <option key={lang.code} value={lang.code}>
+              {lang.name}
+            </option>
+          ))}
+        </select>
+        <img
+          src={GOOGLE_LOGO}
+          alt="Google logo"
+          className="h-6 w-auto ml-2"
+          draggable="false"
+        />
       </div>
 
-      {/* Google Translate Element: visible but styled off-screen for accessibility */}
-      <div
-        id="google_translate_element_visible"
-        style={{ position: 'fixed', bottom: 0, right: 0, zIndex: 9999, opacity: 0, pointerEvents: 'none', width: '200px', height: '40px' }}
-        aria-hidden="true"
-      />
+      {/* Google Translate widget container (hidden dropdown) */}
+      <div id="google_translate_element" style={{ position: 'absolute', left: '-9999px', top: '-9999px' }} />
     </section>
   );
 };
