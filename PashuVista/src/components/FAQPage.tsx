@@ -210,7 +210,7 @@ const FAQPage: React.FC = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', scrollBehavior: 'smooth' }}>
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 py-4 md:px-12 bg-white rounded-b-2xl shadow-md transition-all duration-300" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}>
-        <span className="text-2xl font-semibold text-blue-600">PashuVista</span>
+  <span className="text-2xl font-semibold text-blue-600">PashuMitra</span>
         <div className="hidden md:flex items-center space-x-8">
           <a href="/#about" className="text-gray-700 hover:text-blue-600 font-medium text-lg md:text-xl">About</a>
           <a href="/#faq" className="text-gray-700 hover:text-blue-600 font-medium underline text-lg md:text-xl">FAQ</a>
