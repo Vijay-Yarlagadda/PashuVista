@@ -18,7 +18,8 @@ function App() {
             <Route path="/find-veterinary-doctors" element={<FindVeterinaryDoctors />} />
           </Routes>
         </div>
-        <LastSection />
+        {/* Only show LastSection if not on /get-started */}
+        {window.location.pathname !== '/get-started' && <LastSection />}
       </div>
     </Router>
   );
