@@ -8,12 +8,14 @@ import FindVeterinaryDoctors from './components/FindVeterinaryDoctors';
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/get-started" element={<GetStartedPage />} />
+      <div className="relative min-h-screen pb-32">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/get-started" element={<GetStartedPage />} />
           <Route path="/find-veterinary-doctors" element={<FindVeterinaryDoctors />} />
-      </Routes>
+        </Routes>
+      </div>
     </Router>
   );
 }
