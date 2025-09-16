@@ -1,11 +1,11 @@
 {
-  "name": "pashumitra-monorepo-root",
+  "name": "pashuvista-monorepo-root",
   "private": true,
   "scripts": {
-  "postinstall": "cd PashuMitra && npm install",
-  "start": "cd PashuMitra && npm run start",
-  "build": "cd PashuMitra && npm run build",
-  "test": "cd PashuMitra && npm run test"
+  "postinstall": "cd PashuVista && npm install",
+  "start": "cd PashuVista && npm run start",
+  "build": "cd PashuVista && npm run build",
+  "test": "cd PashuVista && npm run test"
   },
   "dependencies": {
     "i18next": "^25.5.2",

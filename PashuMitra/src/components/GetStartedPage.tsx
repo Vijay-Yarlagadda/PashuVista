@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const suggestionTags = [
   'Breed Identification',
   'Cattle Care Tips',
-  'How PashuMitra Works',
+  'How PashuVista Works',
 ];
 
 const placeholderVariants = {
@@ -118,7 +118,7 @@ const GetStartedPage: React.FC = () => {
             <ArrowLeftIcon className="w-5 h-5" />
             <span className="font-medium">Back to Home</span>
           </Link>
-          <h1 className="text-2xl font-bold text-blue-600">PashuMitra</h1>
+          <h1 className="text-2xl font-bold text-blue-600">PashuVista</h1>
           <div className="w-24"></div> {/* Spacer for centering */}
         </div>
       </header>

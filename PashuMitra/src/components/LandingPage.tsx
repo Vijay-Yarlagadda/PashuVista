@@ -51,7 +51,7 @@ const LandingPage: React.FC = () => {
                 <Bars3Icon className="h-7 w-7 text-black transition-all" />
               </button>
             ) : (
-              <span className="text-3xl font-semibold text-blue-600 transition-all">PashuMitra</span>
+              <span className="text-3xl font-semibold text-blue-600 transition-all">PashuVista</span>
             )}
           </div>
           <div className="hidden md:flex items-center space-x-8">
@@ -79,13 +79,13 @@ const LandingPage: React.FC = () => {
               style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif' }}
             >
               <span className="block md:inline">Pashu</span>
-              <span className="block md:inline">Mitra</span>
+              <span className="block md:inline">Vista</span>
             </h1>
             <h2 className="text-2xl md:text-3xl text-gray-700 mb-4 font-bold">
               Identify cattle breeds instantly using just an image.
             </h2>
             <p className="text-gray-600 mb-6 max-w-2xl md:max-w-2xl">
-              Train and use AI models to recognize different cattle breeds with ease. Farmers, vets, and researchers can get reliable breed identification without technical knowledge. Upload a photo and let PashuMitra do the rest — fast, accurate, and farmer-friendly.
+              Train and use AI models to recognize different cattle breeds with ease. Farmers, vets, and researchers can get reliable breed identification without technical knowledge. Upload a photo and let PashuVista do the rest — fast, accurate, and farmer-friendly.
             </p>
             <Link
               to="/get-started"

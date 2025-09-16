@@ -1,8 +1,8 @@
 # Ignore all node_modules folders
 node_modules/
 node_modules/
-PashuMitra/node_modules/
-PashuMitra/build/
+PashuVista/node_modules/
+PashuVista/build/
 build/
 dist/
 .env

@@ -18,7 +18,7 @@ type MenuItem = {
 };
 
 const menu: MenuItem[] = [
-  { key: 'about', label: 'About PashuMitra', to: '/', Icon: InformationCircleIcon },
+  { key: 'about', label: 'About PashuVista', to: '/', Icon: InformationCircleIcon },
   { key: 'faq', label: 'FAQ', to: '/faq', Icon: QuestionMarkCircleIcon },
   { key: 'breed', label: 'Breed Recognition', to: '/get-started', Icon: CameraIcon },
   { key: 'resources', label: 'Resources', to: '/resources', Icon: BookOpenIcon },
@@ -114,7 +114,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
           <motion.aside
             role="dialog"
             aria-modal="true"
-            aria-label="PashuMitra menu"
+            aria-label="PashuVista menu"
             ref={panelRef}
             className="relative z-50 bg-white h-full shadow-2xl overflow-y-auto"
             initial={{ x: '-100%' }}
@@ -136,7 +136,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             {/* Header inside panel */}
             <div className="flex items-center gap-3 px-4 py-4 border-b">
               <Bars3Icon className="h-6 w-6 text-black" />
-                <div className="text-2xl font-bold" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', color: '#2563eb', fontWeight: 700, fontStyle: 'normal' }}>PashuMitra</div>
+                <div className="text-2xl font-bold" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', color: '#2563eb', fontWeight: 700, fontStyle: 'normal' }}>PashuVista</div>
               <button
                 onClick={onClose}
                 aria-label="Close menu"
@@ -175,7 +175,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
 
             <div className="mt-auto px-4 py-6 border-t text-sm text-gray-600" style={{ fontFamily: 'Google Sans, Helvetica, Arial, sans-serif', fontWeight: 500 }}>
               <div className="font-medium">Version</div>
-              <div className="text-xs">PashuMitra alpha</div>
+              <div className="text-xs">PashuVista alpha</div>
             </div>
           </motion.aside>
         </motion.div>
