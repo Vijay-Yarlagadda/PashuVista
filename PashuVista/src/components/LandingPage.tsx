@@ -79,7 +79,7 @@ const LandingPage: React.FC = () => {
               style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif' }}
             >
               <span className="block md:inline">Pashu</span>
-              <span className="block md:inline">Vista</span>
+              <span className="block md:inline">Mitra</span>
             </h1>
             <h2 className="text-2xl md:text-3xl text-gray-700 mb-4 font-bold">
               Identify cattle breeds instantly using just an image.
