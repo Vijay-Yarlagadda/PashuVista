@@ -75,8 +75,8 @@ const LastSection: React.FC = () => {
         style={{ lineHeight: '1.2' }}
       >
         <div>This is an</div>
-        <div className="text-3xl font-bold text-gray-500">A.I.</div>
-        <div>Experiment</div>
+        <div className="text-3xl font-bold text-gray-500">Breed</div>
+        <div>Identifier</div>
       </div>
 
       {/* Bottom Right: Privacy, Language, Google Logo */}
