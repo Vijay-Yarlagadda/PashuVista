@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { detectBreedFromFilename } from '../utils/breedMapping';
 import { motion, AnimatePresence } from 'framer-motion';
 const m: any = motion;
 import { MicrophoneIcon, PlusIcon, CameraIcon, PhotoIcon, ArrowLeftIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
@@ -16,6 +17,16 @@ const placeholderVariants = {
 };
 
 const GetStartedPage: React.FC = () => {
+  // Message type for chat history
+  type Message =
+    | { type: 'image'; image: string }
+    | { type: 'breed'; breed: string; confidence: number };
+
+  // Chat messages state
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  // Store filename for breed detection
+  const [imageFilename, setImageFilename] = useState('');
   // Webcam modal state and refs
   const [showWebcam, setShowWebcam] = useState(false);
   const [webcamStream, setWebcamStream] = useState<MediaStream | null>(null);
@@ -88,6 +99,8 @@ const GetStartedPage: React.FC = () => {
     reader.onload = (e) => {
       setImage(e.target?.result as string);
       setShowPreview(true);
+      // Save filename for breed detection
+      setImageFilename(file.name);
     };
     reader.readAsDataURL(file);
   };
@@ -109,11 +122,16 @@ const GetStartedPage: React.FC = () => {
   };
 
   const handleSend = () => {
-    if (image) {
-      // Send image to backend
-      console.log('Sending image:', image);
+    if (image && imageFilename) {
+      // Add image message (user)
+      setMessages(prev => [...prev, { type: 'image', image }]);
+      // Detect breed from filename
+      const result = detectBreedFromFilename(imageFilename);
+      // Add breed response (bot)
+      setMessages(prev => [...prev, { type: 'breed', ...result }]);
       setImage(null);
       setShowPreview(false);
+      setImageFilename('');
     }
   };
 
@@ -139,6 +157,25 @@ const GetStartedPage: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center px-4 py-8">
         <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-2xl dark:shadow-gray-900/20 p-6 flex flex-col items-center transition-all duration-300">
+          {/* Chat messages */}
+          <div className="w-full flex flex-col gap-4 mb-6">
+            {messages.map((msg, idx) => (
+              msg.type === 'image' ? (
+                <div key={idx} className="flex justify-end">
+                  <div className="bg-blue-100 dark:bg-blue-900 rounded-xl p-2 max-w-[70%] shadow">
+                    <img src={msg.image} alt="User upload" className="rounded-lg max-h-40 object-contain" />
+                  </div>
+                </div>
+              ) : (
+                <div key={idx} className="flex justify-end">
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-3 max-w-[70%] shadow text-right">
+                    <span className="font-bold text-blue-600 dark:text-blue-400">{msg.breed}</span>
+                    <span className="ml-2 text-gray-700 dark:text-gray-300">({msg.confidence}%)</span>
+                  </div>
+                </div>
+              )
+            ))}
+          </div>
           <div className="flex gap-8 justify-center items-center w-full mb-6">
             {/* Visual button to trigger the camera */}
             <button
