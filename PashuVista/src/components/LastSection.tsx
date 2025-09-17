@@ -54,7 +54,7 @@ const LastSection: React.FC = () => {
 
   return (
     <section
-      className="relative w-full min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col justify-center items-center transition-all duration-500 ease-in-out"
+      className="relative w-full min-h-screen bg-[#fafbfc] dark:bg-[#192233] flex flex-col justify-center items-center transition-all duration-500 ease-in-out"
       style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif', marginTop: 0, marginBottom: 0 }}
     >
       {/* Centered Heading & FAQ Link */}
@@ -107,12 +107,6 @@ const LastSection: React.FC = () => {
         </select>
         {/* Theme Toggle */}
         <ThemeToggle />
-        <img
-          src={GOOGLE_LOGO}
-          alt="Google logo"
-          className="h-6 w-auto ml-2"
-          draggable="false"
-        />
       </div>
 
       {/* Google Translate widget container (hidden dropdown) */}
