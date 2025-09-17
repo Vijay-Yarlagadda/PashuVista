@@ -18,18 +18,22 @@ export function detectBreedFromFilename(filename) {
       confidence: 0
     };
   }
+  // Robust breed detection: allow partial matches and ignore extra characters
   for (const entry of breedMapping) {
-    if (lower.includes(entry.keyword)) {
-      return { 
-        breed: entry.breed, 
-        locality: entry.locality, 
-        confidence: entry.confidence 
+    // Remove non-alphabetic characters for comparison
+    const cleanFilename = lower.replace(/[^a-z]/g, '');
+    const cleanKeyword = entry.keyword.replace(/[^a-z]/g, '');
+    if (cleanFilename.includes(cleanKeyword)) {
+      return {
+        breed: entry.breed,
+        locality: entry.locality,
+        confidence: entry.confidence
       };
     }
   }
-  return { 
-    breed: 'Unknown Breed', 
-    locality: 'Not Available', 
-    confidence: 50 
+  return {
+    breed: 'Unknown Breed',
+    locality: 'Not Available',
+    confidence: 50
   };
 }
