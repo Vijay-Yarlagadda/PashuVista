@@ -113,6 +113,7 @@ const LandingPage: React.FC = () => {
         {/* Find Veterinary Doctors Section below landing page */}
         <div className="mt-24">
           <FindVeterinaryDoctors />
+          <LastSection />
         </div>
       </div>
     </>
