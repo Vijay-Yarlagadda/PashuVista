@@ -16,48 +16,72 @@ const placeholderVariants = {
 };
 
 const GetStartedPage: React.FC = () => {
-  const [plusOpen, setPlusOpen] = useState(false);
-  const [input, setInput] = useState('');
-  const [placeholderIdx, setPlaceholderIdx] = useState(0);
+  // Webcam modal state and refs
+  const [showWebcam, setShowWebcam] = useState(false);
+  const [webcamStream, setWebcamStream] = useState<MediaStream | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Detect desktop vs mobile
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  // Open webcam modal for desktop, file input for mobile
+  const handleCamera = async () => {
+    if (isMobile) {
+      if (fileInputRef.current) {
+        fileInputRef.current.accept = 'image/*';
+        fileInputRef.current.capture = 'environment';
+        fileInputRef.current.click();
+      }
+    } else {
+      setShowWebcam(true);
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        setWebcamStream(stream);
+        setTimeout(() => {
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+            videoRef.current.play();
+          }
+        }, 100);
+      } catch (err) {
+        alert('Could not access webcam.');
+        setShowWebcam(false);
+      }
+    }
+  };
+
+  // Capture image from webcam
+  const handleCapture = () => {
+    if (videoRef.current) {
+      const canvas = document.createElement('canvas');
+      canvas.width = videoRef.current.videoWidth;
+      canvas.height = videoRef.current.videoHeight;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+        setImage(canvas.toDataURL('image/png'));
+        setShowPreview(true);
+      }
+    }
+    handleCloseWebcam();
+  };
+
+  // Close webcam and stop stream
+  const handleCloseWebcam = () => {
+    setShowWebcam(false);
+    if (webcamStream) {
+      webcamStream.getTracks().forEach(track => track.stop());
+      setWebcamStream(null);
+    }
+  };
+  // 1. Create a ref to get a reference to the input element (fileInputRef)
   const [image, setImage] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const plusButtonRef = useRef<HTMLButtonElement>(null);
-  
-  const placeholders = [
-    'Ask about cattle breeds…',
-    'Type your question…',
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPlaceholderIdx((idx) => (idx + 1) % placeholders.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
+  // ...existing code...
 
   // Handle clicking outside the dropdown to close it
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        plusButtonRef.current &&
-        !dropdownRef.current.contains(event.target as Node) &&
-        !plusButtonRef.current.contains(event.target as Node)
-      ) {
-        setPlusOpen(false);
-      }
-    };
-
-    if (plusOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [plusOpen]);
+  // Remove dropdown/plus logic
 
   const handleImage = (file: File) => {
     const reader = new FileReader();
@@ -74,14 +98,7 @@ const GetStartedPage: React.FC = () => {
     }
   };
 
-  const handleCamera = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.accept = 'image/*';
-      fileInputRef.current.capture = 'environment';
-      fileInputRef.current.click();
-    }
-    setPlusOpen(false);
-  };
+  // (removed duplicate handleCamera, now only async version above)
 
   const handleGallery = () => {
     if (fileInputRef.current) {
@@ -89,22 +106,18 @@ const GetStartedPage: React.FC = () => {
       fileInputRef.current.removeAttribute('capture');
       fileInputRef.current.click();
     }
-    setPlusOpen(false);
   };
 
   const handleSend = () => {
-    if (input.trim() || image) {
-      // Here you would typically send the message and image to your backend
-      console.log('Sending message:', input);
-      console.log('With image:', image);
-      // Reset the form after sending
-      setInput('');
+    if (image) {
+      // Send image to backend
+      console.log('Sending image:', image);
       setImage(null);
       setShowPreview(false);
     }
   };
 
-  const canSend = input.trim() || image;
+  const canSend = !!image;
 
   return (
     <div className="min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col transition-all duration-500 ease-in-out">
@@ -119,135 +132,61 @@ const GetStartedPage: React.FC = () => {
             <span className="font-medium">Back to Home</span>
           </Link>
           <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400 transition-colors duration-300">PashuVista</h1>
-          <div className="w-24"></div> {/* Spacer for centering */}
+          <div className="w-24"></div>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center px-4 py-8">
-  <m.div
-          className="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-3xl shadow-2xl dark:shadow-gray-900/20 p-8 transition-all duration-300"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, type: 'spring', bounce: 0.3 }}
-        >
-          {/* Input Bar */}
-          <div className="w-full flex items-center gap-3 bg-gray-50 dark:bg-gray-700 rounded-2xl px-6 py-4 shadow-inner dark:shadow-gray-900/20 mb-6 transition-all duration-300">
-            <div className="relative group">
-              <MicrophoneIcon 
-                className="w-7 h-7 text-blue-500 cursor-pointer hover:text-blue-600 transition-colors" 
-              />
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-20">
-                Voice input
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
-              </div>
-            </div>
+        <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-2xl dark:shadow-gray-900/20 p-6 flex flex-col items-center transition-all duration-300">
+          <div className="flex gap-8 justify-center items-center w-full mb-6">
+            {/* Visual button to trigger the camera */}
+            <button
+              className="flex flex-col items-center justify-center p-4 rounded-xl bg-blue-50 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-gray-600 transition-colors duration-300 shadow"
+              onClick={handleCamera}
+              aria-label="Take a photo"
+            >
+              <CameraIcon className="w-10 h-10 text-blue-500 mb-2" />
+              <span className="text-xs text-gray-700 dark:text-gray-300">Camera</span>
+            </button>
+            <button
+              className="flex flex-col items-center justify-center p-4 rounded-xl bg-blue-50 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-gray-600 transition-colors duration-300 shadow"
+              onClick={handleGallery}
+              aria-label="Upload from gallery"
+            >
+              <PhotoIcon className="w-10 h-10 text-blue-500 mb-2" />
+              <span className="text-xs text-gray-700 dark:text-gray-300">Gallery</span>
+            </button>
+            {/* Hidden file input that opens the camera or gallery (mobile only) */}
             <input
-              className="flex-1 bg-transparent outline-none text-xl placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100 transition-colors duration-300"
-              type="text"
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              placeholder={placeholders[placeholderIdx]}
-              style={{ fontFamily: 'Google Sans, Arial, sans-serif' }}
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleUpload}
             />
-            <div className="flex items-center gap-2">
-              <div className="relative group">
-                <button
-                  ref={plusButtonRef}
-                  className="p-3 rounded-full hover:bg-blue-100 dark:hover:bg-gray-600 transition-colors duration-300"
-                  onClick={() => setPlusOpen((v) => !v)}
-                  aria-label="More options"
-                >
-                  <PlusIcon className="w-7 h-7 text-blue-500" />
-                </button>
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-20">
-                  Add files and more
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
-                </div>
-                <AnimatePresence>
-                  {plusOpen && (
-                    <m.div
-                      ref={dropdownRef}
-                      className="absolute right-0 top-14 flex flex-col gap-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/20 p-3 border border-gray-100 dark:border-gray-600 z-10 transition-all duration-300"
-                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <button
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-300 text-left min-w-[140px] text-gray-900 dark:text-gray-100"
-                        onClick={handleCamera}
-                      >
-                        <CameraIcon className="w-5 h-5 text-blue-500" />
-                        <span className="font-medium">Camera</span>
-                      </button>
-                      <button
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-300 text-left min-w-[140px] text-gray-900 dark:text-gray-100"
-                        onClick={handleGallery}
-                      >
-                        <PhotoIcon className="w-5 h-5 text-blue-500" />
-                        <span className="font-medium">Upload</span>
-                      </button>
-                    </m.div>
-                  )}
-                </AnimatePresence>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleUpload}
-                />
-              </div>
-              
-              {/* Send Button */}
-              {canSend && (
-                <m.div 
-                  className="relative group"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.2 }}
-                >
+          </div>
+          {/* Webcam Modal for desktop */}
+          {showWebcam && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
+              <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 flex flex-col items-center">
+                <video ref={videoRef} autoPlay playsInline className="rounded-xl mb-4 max-w-xs w-full" />
+                <div className="flex gap-4">
                   <button
-                    className="p-3 rounded-full bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors duration-300"
-                    onClick={handleSend}
-                    aria-label="Send message"
-                  >
-                    <PaperAirplaneIcon className="w-7 h-7 text-white" />
-                  </button>
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-20">
-                    Send message
-                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
-                  </div>
-                </m.div>
-              )}
+                    className="px-6 py-2 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-600 transition-colors"
+                    onClick={handleCapture}
+                  >Capture</button>
+                  <button
+                    className="px-6 py-2 rounded-lg bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 font-bold hover:bg-gray-400 dark:hover:bg-gray-800 transition-colors"
+                    onClick={handleCloseWebcam}
+                  >Cancel</button>
+                </div>
+              </div>
             </div>
-          </div>
-
-          {/* Suggestions */}
-          <div className="w-full flex flex-wrap gap-3 justify-center mb-6">
-            {suggestionTags.map((tag, i) => (
-              <m.button
-                key={tag}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-base font-medium shadow-sm hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors duration-300"
-                style={{ fontFamily: 'Google Sans, Arial, sans-serif' }}
-              >
-                {tag}
-              </m.button>
-            ))}
-          </div>
-
+          )}
           {/* Image Preview */}
           {showPreview && image && (
-            <m.div
-              className="w-full flex flex-col items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-            >
+            <div className="w-full flex flex-col items-center mb-4">
               <div className="relative">
                 <img src={image} alt="Preview" className="rounded-xl shadow-lg max-h-64 object-contain" />
                 <button 
@@ -257,16 +196,19 @@ const GetStartedPage: React.FC = () => {
                   ×
                 </button>
               </div>
-            </m.div>
+            </div>
           )}
-
-          {/* Instructions */}
-          <div className="mt-8 text-center">
-            <p className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-300">
-              Upload a photo of cattle or ask a question to get started with breed identification
-            </p>
-          </div>
-  </m.div>
+          {/* Send Button */}
+          {canSend && (
+            <button
+              className="w-full py-3 rounded-xl bg-blue-500 dark:bg-blue-600 text-white font-bold text-lg hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors duration-300"
+              onClick={handleSend}
+              aria-label="Send image"
+            >
+              Send
+            </button>
+          )}
+        </div>
       </main>
     </div>
   );
