@@ -207,14 +207,14 @@ const FAQPage: React.FC = () => {
 
   // Always show scrolled navbar style on FAQ page
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', scrollBehavior: 'smooth' }}>
+    <div className="min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col transition-all duration-500 ease-in-out" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', scrollBehavior: 'smooth' }}>
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 py-4 md:px-12 bg-white rounded-b-2xl shadow-md transition-all duration-300" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}>
-  <span className="text-2xl font-semibold text-blue-600">PashuVista</span>
+      <nav className="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 py-4 md:px-12 bg-white dark:bg-gray-800 rounded-b-2xl shadow-md dark:shadow-gray-900/20 transition-all duration-300" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}>
+  <span className="text-2xl font-semibold text-blue-600 dark:text-blue-400 transition-colors duration-300">PashuVista</span>
         <div className="hidden md:flex items-center space-x-8">
-          <a href="/#about" className="text-gray-700 hover:text-blue-600 font-medium text-lg md:text-xl">About</a>
-          <a href="/#faq" className="text-gray-700 hover:text-blue-600 font-medium underline text-lg md:text-xl">FAQ</a>
-          <Link to="/get-started" className="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-700 transition">Get Started</Link>
+          <a href="/#about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-lg md:text-xl transition-colors duration-300">About</a>
+          <a href="/#faq" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium underline text-lg md:text-xl transition-colors duration-300">FAQ</a>
+          <Link to="/get-started" className="bg-blue-600 dark:bg-blue-500 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300">Get Started</Link>
         </div>
       </nav>
 
@@ -241,8 +241,8 @@ const FAQPage: React.FC = () => {
                     onClick={() => smoothScrollTo(categoryId)}
                     className={`block w-full text-left px-4 py-3 rounded-lg font-medium text-lg tracking-tight transition-all duration-300 ${
                       isActive 
-                        ? 'bg-blue-100 text-blue-700 shadow-md transform scale-105' 
-                        : 'text-blue-600 hover:text-blue-700 hover:bg-blue-50'
+                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 shadow-md dark:shadow-gray-900/20 transform scale-105' 
+                        : 'text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:bg-blue-50 dark:hover:bg-gray-700'
                     }`}
                     style={{ fontFamily: 'Google Sans, Arial, sans-serif', letterSpacing: '0.01em' }}
                     whileHover={{ scale: 1.02 }}
@@ -283,7 +283,7 @@ const FAQPage: React.FC = () => {
               viewport={{ once: true, margin: "-100px" }}
             >
               <m.h2 
-                className="text-4xl font-semibold text-blue-600 mb-8" 
+                className="text-4xl font-semibold text-blue-600 dark:text-blue-400 mb-8 transition-colors duration-300" 
                 style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -306,7 +306,7 @@ const FAQPage: React.FC = () => {
                       viewport={{ once: true }}
                     >
                       <m.button
-                        className={`w-full flex items-center justify-between px-0 py-5 text-2xl font-semibold transition-all duration-300 rounded-lg ${isOpen ? 'text-blue-600 bg-blue-50' : 'text-black hover:bg-gray-50'}`}
+                        className={`w-full flex items-center justify-between px-0 py-5 text-2xl font-semibold transition-all duration-300 rounded-lg ${isOpen ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30' : 'text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700'}`}
                         onClick={() => setOpenIndexes({ ...openIndexes, [cat.category]: isOpen ? null : idx })}
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
@@ -339,7 +339,7 @@ const FAQPage: React.FC = () => {
                             className="overflow-hidden"
                           >
                             <m.div 
-                              className="text-lg text-black bg-white rounded-lg px-4 py-4 border border-blue-100 mt-2 shadow-sm"
+                              className="text-lg text-black dark:text-gray-200 bg-white dark:bg-gray-800 rounded-lg px-4 py-4 border border-blue-100 dark:border-gray-600 mt-2 shadow-sm dark:shadow-gray-900/20 transition-all duration-300"
                               style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}
                               initial={{ y: -10, opacity: 0 }}
                               animate={{ y: 0, opacity: 1 }}

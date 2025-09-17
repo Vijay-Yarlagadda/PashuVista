@@ -107,18 +107,18 @@ const GetStartedPage: React.FC = () => {
   const canSend = input.trim() || image;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col">
+    <div className="min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col transition-all duration-500 ease-in-out">
       {/* Header */}
-      <header className="w-full bg-white/80 backdrop-blur-sm shadow-sm">
+      <header className="w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm dark:shadow-gray-900/20 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link 
             to="/" 
-            className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
           >
             <ArrowLeftIcon className="w-5 h-5" />
             <span className="font-medium">Back to Home</span>
           </Link>
-          <h1 className="text-2xl font-bold text-blue-600">PashuVista</h1>
+          <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400 transition-colors duration-300">PashuVista</h1>
           <div className="w-24"></div> {/* Spacer for centering */}
         </div>
       </header>
@@ -126,13 +126,13 @@ const GetStartedPage: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center px-4 py-8">
   <m.div
-          className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl p-8"
+          className="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-3xl shadow-2xl dark:shadow-gray-900/20 p-8 transition-all duration-300"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, type: 'spring', bounce: 0.3 }}
         >
           {/* Input Bar */}
-          <div className="w-full flex items-center gap-3 bg-gray-50 rounded-2xl px-6 py-4 shadow-inner mb-6">
+          <div className="w-full flex items-center gap-3 bg-gray-50 dark:bg-gray-700 rounded-2xl px-6 py-4 shadow-inner dark:shadow-gray-900/20 mb-6 transition-all duration-300">
             <div className="relative group">
               <MicrophoneIcon 
                 className="w-7 h-7 text-blue-500 cursor-pointer hover:text-blue-600 transition-colors" 
@@ -143,7 +143,7 @@ const GetStartedPage: React.FC = () => {
               </div>
             </div>
             <input
-              className="flex-1 bg-transparent outline-none text-xl placeholder-gray-400"
+              className="flex-1 bg-transparent outline-none text-xl placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100 transition-colors duration-300"
               type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
@@ -154,7 +154,7 @@ const GetStartedPage: React.FC = () => {
               <div className="relative group">
                 <button
                   ref={plusButtonRef}
-                  className="p-3 rounded-full hover:bg-blue-100 transition-colors"
+                  className="p-3 rounded-full hover:bg-blue-100 dark:hover:bg-gray-600 transition-colors duration-300"
                   onClick={() => setPlusOpen((v) => !v)}
                   aria-label="More options"
                 >
@@ -168,21 +168,21 @@ const GetStartedPage: React.FC = () => {
                   {plusOpen && (
                     <m.div
                       ref={dropdownRef}
-                      className="absolute right-0 top-14 flex flex-col gap-2 bg-white rounded-xl shadow-lg p-3 border border-gray-100 z-10"
+                      className="absolute right-0 top-14 flex flex-col gap-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/20 p-3 border border-gray-100 dark:border-gray-600 z-10 transition-all duration-300"
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
                     >
                       <button
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 transition-colors text-left min-w-[140px]"
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-300 text-left min-w-[140px] text-gray-900 dark:text-gray-100"
                         onClick={handleCamera}
                       >
                         <CameraIcon className="w-5 h-5 text-blue-500" />
                         <span className="font-medium">Camera</span>
                       </button>
                       <button
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 transition-colors text-left min-w-[140px]"
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-300 text-left min-w-[140px] text-gray-900 dark:text-gray-100"
                         onClick={handleGallery}
                       >
                         <PhotoIcon className="w-5 h-5 text-blue-500" />
@@ -210,7 +210,7 @@ const GetStartedPage: React.FC = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <button
-                    className="p-3 rounded-full bg-blue-500 hover:bg-blue-600 transition-colors"
+                    className="p-3 rounded-full bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors duration-300"
                     onClick={handleSend}
                     aria-label="Send message"
                   >
@@ -232,7 +232,7 @@ const GetStartedPage: React.FC = () => {
                 key={tag}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 rounded-full bg-blue-50 text-blue-600 text-base font-medium shadow-sm hover:bg-blue-100 transition-colors"
+                className="px-6 py-3 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-base font-medium shadow-sm hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors duration-300"
                 style={{ fontFamily: 'Google Sans, Arial, sans-serif' }}
               >
                 {tag}
@@ -262,7 +262,7 @@ const GetStartedPage: React.FC = () => {
 
           {/* Instructions */}
           <div className="mt-8 text-center">
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-300">
               Upload a photo of cattle or ask a question to get started with breed identification
             </p>
           </div>

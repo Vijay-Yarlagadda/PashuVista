@@ -116,7 +116,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             aria-modal="true"
             aria-label="PashuVista menu"
             ref={panelRef}
-            className="relative z-50 bg-white h-full shadow-2xl overflow-y-auto"
+            className="relative z-50 bg-white dark:bg-gray-800 h-full shadow-2xl dark:shadow-gray-900/20 overflow-y-auto transition-all duration-300"
             initial={{ x: '-100%' }}
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
@@ -134,16 +134,16 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             }}
           >
             {/* Header inside panel */}
-            <div className="flex items-center gap-3 px-4 py-4 border-b">
-              <Bars3Icon className="h-6 w-6 text-black" />
-                <div className="text-2xl font-bold" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', color: '#2563eb', fontWeight: 700, fontStyle: 'normal' }}>PashuVista</div>
+            <div className="flex items-center gap-3 px-4 py-4 border-b dark:border-gray-600 transition-colors duration-300">
+              <Bars3Icon className="h-6 w-6 text-black dark:text-white transition-colors duration-300" />
+                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 transition-colors duration-300" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', fontWeight: 700, fontStyle: 'normal' }}>PashuVista</div>
               <button
                 onClick={onClose}
                 aria-label="Close menu"
                 className="ml-auto p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <span className="sr-only">Close</span>
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="text-black"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="text-black dark:text-white transition-colors duration-300"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
 
@@ -156,15 +156,15 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                     <li key={mitem.key} className="px-2">
                       <button
                         onClick={() => onNavigate(mitem.to)}
-                        className={`w-full text-left flex items-center gap-3 rounded-lg px-3 py-3 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                        className={`w-full text-left flex items-center gap-3 rounded-lg px-3 py-3 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
                           active
-                            ? 'bg-blue-50 text-blue-700'
-                            : 'text-gray-800 hover:bg-gray-50 hover:text-black'
+                            ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                            : 'text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white'
                         }`}
                         aria-current={active ? 'page' : undefined}
-                        style={{ fontFamily: 'Google Sans, Helvetica, Arial, sans-serif', fontWeight: 500, fontSize: 14, color: active ? '#1E3A8A' : '#000000' }}
+                        style={{ fontFamily: 'Google Sans, Helvetica, Arial, sans-serif', fontWeight: 500, fontSize: 14 }}
                       >
-                        <mitem.Icon className={`h-6 w-6 ${active ? 'text-blue-700' : 'text-gray-600'}`} />
+                        <mitem.Icon className={`h-6 w-6 transition-colors duration-300 ${active ? 'text-blue-700 dark:text-blue-300' : 'text-gray-600 dark:text-gray-400'}`} />
                         <span className="flex-1 text-sm md:text-base">{mitem.label}</span>
                       </button>
                     </li>
@@ -173,7 +173,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
               </ul>
             </nav>
 
-            <div className="mt-auto px-4 py-6 border-t text-sm text-gray-600" style={{ fontFamily: 'Google Sans, Helvetica, Arial, sans-serif', fontWeight: 500 }}>
+            <div className="mt-auto px-4 py-6 border-t dark:border-gray-600 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300" style={{ fontFamily: 'Google Sans, Helvetica, Arial, sans-serif', fontWeight: 500 }}>
               <div className="font-medium">Version</div>
               <div className="text-xs">PashuVista alpha</div>
             </div>

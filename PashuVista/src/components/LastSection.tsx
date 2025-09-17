@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const LANGUAGES = [
   { code: 'en', name: 'English' },
@@ -53,17 +54,17 @@ const LastSection: React.FC = () => {
 
   return (
     <section
-      className="relative w-full min-h-[40vh] bg-[#fafbfc] flex flex-col justify-center items-center"
+      className="relative w-full min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col justify-center items-center transition-all duration-500 ease-in-out"
       style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif', marginTop: 0, marginBottom: 0 }}
     >
       {/* Centered Heading & FAQ Link */}
       <div className="flex flex-col items-center justify-center mt-24 mb-32">
-        <h2 className="text-5xl md:text-6xl font-bold mb-8 text-black text-center">
+        <h2 className="text-5xl md:text-6xl font-bold mb-8 text-black dark:text-white text-center transition-colors duration-300">
           More questions?
         </h2>
         <Link
           to="/faq"
-          className="text-xl text-[#1967d2] font-medium underline hover:text-blue-700 mb-16"
+          className="text-xl text-[#1967d2] dark:text-blue-400 font-medium underline hover:text-blue-700 dark:hover:text-blue-300 mb-16 transition-colors duration-300"
         >
           Check our FAQ.
         </Link>
@@ -71,39 +72,41 @@ const LastSection: React.FC = () => {
 
       {/* Bottom Left: AI Experiment */}
       <div
-        className="absolute left-8 bottom-8 text-gray-400 text-lg select-none"
+        className="absolute left-8 bottom-8 text-gray-400 dark:text-gray-500 text-lg select-none transition-colors duration-300"
         style={{ lineHeight: '1.2' }}
       >
         <div>This is an</div>
-        <div className="text-3xl font-bold text-gray-500">Breed</div>
+        <div className="text-3xl font-bold text-gray-500 dark:text-gray-400 transition-colors duration-300">Breed</div>
         <div>Identifier</div>
       </div>
 
-      {/* Bottom Right: Privacy, Language, Google Logo */}
-      <div className="absolute right-8 bottom-8 flex items-center gap-6">
+      {/* Bottom Right: Privacy, Language, Theme Toggle, Google Logo */}
+      <div className="absolute right-8 bottom-8 flex items-center gap-4">
         <a
           href="https://policies.google.com/privacy"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-500 underline text-lg hover:text-gray-700"
+          className="text-gray-500 dark:text-gray-400 underline text-lg hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
         >
           Privacy & Terms
         </a>
         {/* Custom Language Dropdown */}
         <select
           ref={selectRef}
-          className="border border-gray-300 rounded px-2 py-1 text-gray-700 bg-white text-base focus:outline-none"
+          className="border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all duration-300"
           defaultValue="en"
           onChange={handleLanguageChange}
           aria-label="Select language"
           style={{ minWidth: '110px' }}
         >
           {LANGUAGES.map(lang => (
-            <option key={lang.code} value={lang.code}>
+            <option key={lang.code} value={lang.code} className="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
               {lang.name}
             </option>
           ))}
         </select>
+        {/* Theme Toggle */}
+        <ThemeToggle />
         <img
           src={GOOGLE_LOGO}
           alt="Google logo"

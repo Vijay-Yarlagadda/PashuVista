@@ -38,25 +38,29 @@ const locations = [
   }
 ];
 
-const FindVeterinaryDoctors: React.FC = () => {
+interface FindVeterinaryDoctorsProps {
+  standalone?: boolean;
+}
+
+const FindVeterinaryDoctors: React.FC<FindVeterinaryDoctorsProps> = ({ standalone = false }) => {
   const [selectedLocation, setSelectedLocation] = useState(locations[0].name);
   const doctors = locations.find(loc => loc.name === selectedLocation)?.doctors || [];
 
-  return (
-  <section className="w-full max-w-3xl mx-auto mt-27 mb-16 px-4">
+  const content = (
+    <section className="w-full max-w-3xl mx-auto mt-27 mb-16 px-4">
       <h2
-        className="text-3xl md:text-6xl mb-10 font-bold"
-        style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif', color: '#000', fontWeight: 700 }}
+        className="text-3xl md:text-6xl mb-10 font-bold text-black dark:text-white transition-colors duration-300"
+        style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif', fontWeight: 700 }}
       >
         Find Veterinary Doctors
       </h2>
       <div className="mb-6">
-        <label htmlFor="location" className="block mb-2 font-medium text-gray-700">Select Location:</label>
+        <label htmlFor="location" className="block mb-2 font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">Select Location:</label>
         <select
           id="location"
           value={selectedLocation}
           onChange={e => setSelectedLocation(e.target.value)}
-          className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300"
           style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', fontWeight: 500 }}
         >
           {locations.map(loc => (
@@ -66,14 +70,14 @@ const FindVeterinaryDoctors: React.FC = () => {
       </div>
       <div>
         {doctors.length === 0 ? (
-          <div className="text-gray-500">No doctors found for this location.</div>
+          <div className="text-gray-500 dark:text-gray-400 transition-colors duration-300">No doctors found for this location.</div>
         ) : (
           <ul className="space-y-6">
             {doctors.map((doc, idx) => (
-              <li key={idx} className="bg-white rounded-lg shadow p-4">
-                <div className="text-lg font-semibold" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', color: '#000' }}>{doc.name}</div>
-                <div className="text-gray-700 mb-1">Phone: <span className="font-medium">{doc.phone}</span></div>
-                <div className="text-gray-600 text-sm">{doc.address}</div>
+              <li key={idx} className="bg-white dark:bg-gray-800 rounded-lg shadow dark:shadow-gray-900/20 p-4 transition-all duration-300">
+                <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}>{doc.name}</div>
+                <div className="text-gray-700 dark:text-gray-300 mb-1 transition-colors duration-300">Phone: <span className="font-medium">{doc.phone}</span></div>
+                <div className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-300">{doc.address}</div>
               </li>
             ))}
           </ul>
@@ -81,6 +85,16 @@ const FindVeterinaryDoctors: React.FC = () => {
       </div>
     </section>
   );
+
+  if (standalone) {
+    return (
+      <div className="min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col transition-all duration-500 ease-in-out">
+        {content}
+      </div>
+    );
+  }
+
+  return content;
 };
 
 export default FindVeterinaryDoctors;

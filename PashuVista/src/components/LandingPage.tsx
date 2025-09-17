@@ -23,7 +23,7 @@ const LandingPage: React.FC = () => {
   // ...existing code...
   return (
     <>
-      <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col transition-all duration-500 ease-in-out">
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         {/* Navbar */}
         {/* ...existing code... */}
@@ -31,7 +31,7 @@ const LandingPage: React.FC = () => {
           className={`
             fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 py-4 md:px-12 transition-all duration-300
             ${scrolled
-              ? 'bg-white rounded-b-2xl shadow-md'
+              ? 'bg-white dark:bg-gray-800 rounded-b-2xl shadow-md dark:shadow-gray-900/20'
               : 'bg-transparent rounded-none shadow-none'
             }
           `}
@@ -48,22 +48,22 @@ const LandingPage: React.FC = () => {
                 className="p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-transparent"
                 style={{ background: 'none', border: 'none' }}
               >
-                <Bars3Icon className="h-7 w-7 text-black transition-all" />
+                <Bars3Icon className="h-7 w-7 text-black dark:text-white transition-all" />
               </button>
             ) : (
-              <span className="text-3xl font-semibold text-blue-600 transition-all">PashuVista</span>
+              <span className="text-3xl font-semibold text-blue-600 dark:text-blue-400 transition-all">PashuVista</span>
             )}
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium underline text-lg md:text-xl" onClick={e => {
+            <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium underline text-lg md:text-xl transition-colors duration-300" onClick={e => {
               e.preventDefault();
               const el = document.getElementById('about');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}>About</a>
-            <Link to="/faq#FAQSection" className="text-gray-700 hover:text-blue-600 font-medium text-lg md:text-xl">FAQ</Link>
+            <Link to="/faq#FAQSection" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-lg md:text-xl transition-colors duration-300">FAQ</Link>
             <Link
               to="/get-started"
-              className="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-700 transition"
+              className="bg-blue-600 dark:bg-blue-500 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300"
             >
               Get Started
             </Link>
@@ -75,21 +75,21 @@ const LandingPage: React.FC = () => {
           {/* Left Side */}
           <div className="w-full md:w-1/2 flex flex-col items-start md:pr-12 mt-48">
             <h1
-              className="text-5xl md:text-9xl font-bold text-blue-600 mb-4 leading-tight"
+              className="text-5xl md:text-9xl font-bold text-blue-600 dark:text-blue-400 mb-4 leading-tight transition-colors duration-300"
               style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif' }}
             >
               <span className="block md:inline">Pashu</span>
               <span className="block md:inline">Vista</span>
             </h1>
-            <h2 className="text-2xl md:text-3xl text-gray-700 mb-4 font-bold">
+            <h2 className="text-2xl md:text-3xl text-gray-700 dark:text-gray-200 mb-4 font-bold transition-colors duration-300">
               Identify cattle breeds instantly using just an image.
             </h2>
-            <p className="text-gray-600 mb-6 max-w-2xl md:max-w-2xl">
+            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl md:max-w-2xl transition-colors duration-300">
               Train and use AI models to recognize different cattle breeds with ease. Farmers, vets, and researchers can get reliable breed identification without technical knowledge. Upload a photo and let PashuVista do the rest — fast, accurate, and farmer-friendly.
             </p>
             <Link
               to="/get-started"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition mb-6 md:mb-0"
+              className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300 mb-6 md:mb-0"
             >
               Get Started
             </Link>
@@ -101,11 +101,11 @@ const LandingPage: React.FC = () => {
               alt="Cattle"
               className="rounded-xl shadow-lg w-full max-w-xs md:max-w-sm"
             />
-            <div className="bg-white rounded-lg shadow-md mt-6 px-6 py-4 w-full max-w-xs md:max-w-sm flex flex-col items-center">
-              <span className="text-lg font-semibold text-gray-800 mb-2">Result</span>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 mt-6 px-6 py-4 w-full max-w-xs md:max-w-sm flex flex-col items-center transition-all duration-300">
+              <span className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 transition-colors duration-300">Result</span>
               <div className="flex w-full justify-between">
-                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">Breed A</span>
-                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-medium">Not Breed A</span>
+                <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full font-medium transition-colors duration-300">Breed A</span>
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full font-medium transition-colors duration-300">Not Breed A</span>
               </div>
             </div>
           </div>
