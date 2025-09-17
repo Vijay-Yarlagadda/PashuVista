@@ -1,3 +1,5 @@
+# Ignore images in public/images
+public/images/
 # Node modules
 node_modules/
 

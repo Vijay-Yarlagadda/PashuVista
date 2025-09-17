@@ -6,6 +6,31 @@ import FindVeterinaryDoctors from './FindVeterinaryDoctors';
 import LastSection from './LastSection';
 
 const LandingPage: React.FC = () => {
+  // Use images from public/images folder
+  const imageFiles = [
+    'WhatsApp Image 2025-09-17 at 09.24.11_9ec584f8_gir.jpg',
+    'WhatsApp Image 2025-09-17 at 09.24.11_9ec584f8_hallilar.jpg',
+    'WhatsApp Image 2025-09-17 at 09.24.11_9ec584f8_holsteinfreistan.jpg',
+    'WhatsApp Image 2025-09-17 at 09.24.11_8f24a0b7_jersey.jpg',
+  ];
+  // Extract breed name from filename
+  function getBreedName(filename: string): string {
+    if (filename.toLowerCase().includes('gir')) return 'Gir';
+    if (filename.toLowerCase().includes('hallilar')) return 'Hallikar';
+    if (filename.toLowerCase().includes('holsteinfreistan')) return 'Holstein Friesian';
+    if (filename.toLowerCase().includes('jersey')) return 'Jersey';
+    return 'Unknown';
+  }
+  const carouselImages = imageFiles.map(f => ({ src: `/images/${f}`, breed: getBreedName(f) }));
+
+  const [carouselIdx, setCarouselIdx] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCarouselIdx(idx => (idx + 1) % carouselImages.length);
+    }, 3000); // Change every 3 seconds
+    return () => clearInterval(timer);
+  }, []);
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -94,19 +119,20 @@ const LandingPage: React.FC = () => {
               Get Started
             </Link>
           </div>
-          {/* Right Side */}
-          <div className="w-full md:w-1/2 flex flex-col items-center mt-8 md:mt-0">
-            <img
-              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80"
-              alt="Cattle"
-              className="rounded-xl shadow-lg w-full max-w-xs md:max-w-sm"
-            />
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 mt-6 px-6 py-4 w-full max-w-xs md:max-w-sm flex flex-col items-center transition-all duration-300">
-              <span className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 transition-colors duration-300">Result</span>
-              <div className="flex w-full justify-between">
-                <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full font-medium transition-colors duration-300">Breed A</span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full font-medium transition-colors duration-300">Not Breed A</span>
-              </div>
+          {/* Right Side: Carousel (smaller) */}
+          <div className="w-full md:w-1/2 flex flex-col items-center mt-4 md:mt-0">
+            <div className="w-full max-w-[220px] md:max-w-[270px] aspect-[4/3] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+              <img
+                src={carouselImages[carouselIdx].src}
+                alt={carouselImages[carouselIdx].breed}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 mt-5 px-5 py-3 w-full max-w-[220px] md:max-w-[270px] flex flex-col items-center transition-all duration-300">
+              <span className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 transition-colors duration-300">Breed</span>
+              <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full font-bold text-lg transition-colors duration-300">
+                {carouselImages[carouselIdx].breed}
+              </span>
             </div>
           </div>
         </main>
