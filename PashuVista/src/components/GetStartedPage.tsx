@@ -20,7 +20,7 @@ const GetStartedPage: React.FC = () => {
   // Message type for chat history
   type Message =
     | { type: 'image'; image: string }
-    | { type: 'breed'; breed: string; confidence: number };
+    | { type: 'breed'; breed: string; confidence: number; locality: string };
 
   // Chat messages state
   const [messages, setMessages] = useState<Message[]>([]);
@@ -128,7 +128,7 @@ const GetStartedPage: React.FC = () => {
       // Detect breed from filename
       const result = detectBreedFromFilename(imageFilename);
       // Add breed response (bot)
-      setMessages(prev => [...prev, { type: 'breed', ...result }]);
+  setMessages(prev => [...prev, { type: 'breed', ...result }]);
       setImage(null);
       setShowPreview(false);
       setImageFilename('');
@@ -171,6 +171,7 @@ const GetStartedPage: React.FC = () => {
                   <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-3 max-w-[70%] shadow text-right">
                     <span className="font-bold text-blue-600 dark:text-blue-400">{msg.breed}</span>
                     <span className="ml-2 text-gray-700 dark:text-gray-300">({msg.confidence}%)</span>
+                    <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">{msg.locality}</div>
                   </div>
                 </div>
               )
