@@ -10,6 +10,14 @@ export const breedMapping = [
 
 export function detectBreedFromFilename(filename) {
   const lower = filename.toLowerCase();
+  // Handle camera-captured images (common generic names)
+  if (lower.startsWith('image') || lower.startsWith('photo') || lower.startsWith('img_') || lower.startsWith('dsc_')) {
+    return {
+      breed: 'Camera Image (Breed Not Detected)',
+      locality: 'Manual review needed',
+      confidence: 0
+    };
+  }
   for (const entry of breedMapping) {
     if (lower.includes(entry.keyword)) {
       return { 

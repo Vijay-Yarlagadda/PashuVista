@@ -71,6 +71,7 @@ const GetStartedPage: React.FC = () => {
       if (ctx) {
         ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
         setImage(canvas.toDataURL('image/png'));
+        setImageFilename('camera_capture.png'); // Set dummy filename for webcam
         setShowPreview(true);
       }
     }
