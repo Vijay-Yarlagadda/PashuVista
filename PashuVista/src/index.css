@@ -1,3 +1,28 @@
+/* Hide Google Translate floating logo widget */
+#goog-gt-tt, .goog-te-gadget-icon {
+	display: none !important;
+	visibility: hidden !important;
+	opacity: 0 !important;
+	z-index: -1 !important;
+}
+/* Google Translate widget theme adaptation */
+#google_translate_element, #google_translate_element * {
+	color: #111 !important;
+	background: #fff !important;
+}
+html.dark #google_translate_element, html.dark #google_translate_element * {
+	color: #fff !important;
+	background: #222 !important;
+}
+/* Style Google Translate iframes for theme */
+iframe.goog-te-menu-frame, iframe.goog-te-balloon-frame {
+	background: #fff !important;
+	color: #111 !important;
+}
+html.dark iframe.goog-te-menu-frame, html.dark iframe.goog-te-balloon-frame {
+	background: #222 !important;
+	color: #fff !important;
+}
 /* Force hide Google Translate banner and its parent */
 iframe.goog-te-banner-frame, .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame, .goog-te-menu-frame {
 	display: none !important;
@@ -22,6 +47,7 @@ iframe.goog-te-banner-frame, .goog-te-banner-frame.skiptranslate {
 body {
 	top: 0px !important;
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
