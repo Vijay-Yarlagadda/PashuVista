@@ -1,3 +1,27 @@
+/* Force hide Google Translate banner and its parent */
+iframe.goog-te-banner-frame, .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame, .goog-te-menu-frame {
+	display: none !important;
+	visibility: hidden !important;
+	height: 0 !important;
+	width: 0 !important;
+	border: none !important;
+	position: absolute !important;
+	top: -9999px !important;
+	left: -9999px !important;
+	z-index: -1 !important;
+}
+body > .skiptranslate, body > #goog-gt-tt {
+	display: none !important;
+}
+/* Force hide Google Translate banner */
+iframe.goog-te-banner-frame, .goog-te-banner-frame.skiptranslate {
+	display: none !important;
+	visibility: hidden !important;
+	height: 0 !important;
+}
+body {
+	top: 0px !important;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

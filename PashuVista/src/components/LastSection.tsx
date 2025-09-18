@@ -17,24 +17,22 @@ const LANGUAGES = [
   { code: 'ur', name: 'Urdu' }
 ];
 
-const GOOGLE_LOGO = 'https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png';
 
-function suppressGoogleBanner() {
-  const interval = setInterval(() => {
-    const banner = document.querySelector('iframe.goog-te-banner-frame') as HTMLIFrameElement | null;
-    if (banner && banner.style) {
-      banner.style.display = 'none';
-      document.body.style.top = '0px';
-      clearInterval(interval);
-    }
-  }, 500);
+// Forcefully remove Google Translate banner iframe from DOM
+function removeGoogleBanner() {
+  const banner = document.querySelector('iframe.goog-te-banner-frame');
+  if (banner && banner.parentNode) {
+    banner.parentNode.removeChild(banner);
+  }
+  document.body.style.top = '0px';
 }
 
 const LastSection: React.FC = () => {
   const selectRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
-    suppressGoogleBanner();
+    const interval = setInterval(removeGoogleBanner, 500);
+    return () => clearInterval(interval);
   }, []);
 
   const triggerTranslation = (lang: string, retries = 0) => {
@@ -42,7 +40,7 @@ const LastSection: React.FC = () => {
     if (select) {
       select.value = lang;
       select.dispatchEvent(new Event('change', { bubbles: true }));
-      suppressGoogleBanner();
+      // Banner removal is handled by useEffect
     } else if (retries < 10) {
       setTimeout(() => triggerTranslation(lang, retries + 1), 300);
     }
@@ -80,7 +78,7 @@ const LastSection: React.FC = () => {
         <div>Identifier</div>
       </div>
 
-      {/* Bottom Right: Privacy, Language, Theme Toggle, Google Logo */}
+      {/* Bottom Right: Privacy, Language, Theme Toggle */}
       <div className="absolute right-8 bottom-8 flex items-center gap-4">
         <a
           href="https://policies.google.com/privacy"
@@ -90,6 +88,7 @@ const LastSection: React.FC = () => {
         >
           Privacy & Terms
         </a>
+
         {/* Custom Language Dropdown */}
         <select
           ref={selectRef}
@@ -100,16 +99,17 @@ const LastSection: React.FC = () => {
           style={{ minWidth: '110px' }}
         >
           {LANGUAGES.map(lang => (
-            <option key={lang.code} value={lang.code} className="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+            <option key={lang.code} value={lang.code}>
               {lang.name}
             </option>
           ))}
         </select>
+
         {/* Theme Toggle */}
         <ThemeToggle />
       </div>
 
-      {/* Google Translate widget container (hidden dropdown) */}
+      {/* Google Translate widget container (hidden) */}
       <div id="google_translate_element" style={{ position: 'absolute', left: '-9999px', top: '-9999px' }} />
     </section>
   );

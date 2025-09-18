@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PashuVista</title>
-    <link href="%PUBLIC_URL%/styles/tailwind.css" rel="stylesheet">
+  <link href="%PUBLIC_URL%/styles/tailwind.css" rel="stylesheet" />
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        { pageLanguage: "en" }, // default language of your site
+        "google_translate_element"
+      );
+    }
+  </script>
+  <script
+    type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+  ></script>
 </head>
 <body class="bg-gray-100">
-    <div id="root"></div>
-    <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,hi,te,ta,kn,ml,gu,pa,bn,mr,or,ur',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        }, 'google_translate_element');
-      }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <div id="root"></div>
 </body>
 </html>
