@@ -17,7 +17,7 @@ const GetStartedPage: React.FC = () => {
     | {
         type: 'breed';
         breed: string;
-        confidence: number;
+  // confidence removed
         origin: string;
         milkYield: string;
         milkAge: string;
@@ -165,9 +165,7 @@ const GetStartedPage: React.FC = () => {
                     <span className="font-bold text-blue-600 dark:text-blue-400">
                       {msg.breed}
                     </span>
-                    <span className="ml-2 text-gray-700 dark:text-gray-300">
-                      ({msg.confidence}%)
-                    </span>
+                    {/* confidence removed */}
                     <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                       <p><strong>Origin:</strong> {msg.origin}</p>
                       <p><strong>Milk Yield:</strong> {msg.milkYield}</p>

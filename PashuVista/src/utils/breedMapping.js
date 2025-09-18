@@ -1,10 +1,10 @@
 // Static breed mapping for demo purposes (with origin, milk yield, age of production, and generation capacity)
 export const breedMapping = [
-  { keyword: 'sahiwal', breed: 'Sahiwal', origin: 'Punjab / Haryana', milkYield: '8–10 liters/day', milkAge: '3–4 years onwards', generationCapacity: '10–12 years', confidence: 90 },
-  { keyword: 'jersey', breed: 'Jersey', origin: 'Jersey Island (adapted in India)', milkYield: '12–15 liters/day', milkAge: '2.5–3 years onwards', generationCapacity: '10 years', confidence: 92 },
-  { keyword: 'gir', breed: 'Gir', origin: 'Gujarat', milkYield: '10–12 liters/day', milkAge: '3 years onwards', generationCapacity: '12–15 years', confidence: 91 },
-  { keyword: 'hallilar', breed: 'Hallilar', origin: 'South India', milkYield: '2–5 liters/day', milkAge: '3 years onwards', generationCapacity: '8–10 years', confidence: 94 },
-  { keyword: 'holstein', breed: 'Holstein Friesian', origin: 'Netherlands (adapted in Punjab)', milkYield: '20–25 liters/day', milkAge: '2.5 years onwards', generationCapacity: '7–9 years', confidence: 93 },
+  { keyword: 'sahiwal', breed: 'Sahiwal', origin: 'Punjab / Haryana', milkYield: '8–10 liters/day', milkAge: '3–4 years onwards', generationCapacity: '10–12 years' },
+  { keyword: 'jersey', breed: 'Jersey', origin: 'Jersey Island (adapted in India)', milkYield: '12–15 liters/day', milkAge: '2.5–3 years onwards', generationCapacity: '10 years' },
+  { keyword: 'gir', breed: 'Gir', origin: 'Gujarat', milkYield: '10–12 liters/day', milkAge: '3 years onwards', generationCapacity: '12–15 years' },
+  { keyword: 'hallilar', breed: 'Hallilar', origin: 'South India', milkYield: '2–5 liters/day', milkAge: '3 years onwards', generationCapacity: '8–10 years' },
+  { keyword: 'holstein', breed: 'Holstein Friesian', origin: 'Netherlands (adapted in Punjab)', milkYield: '20–25 liters/day', milkAge: '2.5 years onwards', generationCapacity: '7–9 years' },
   // Add more breeds if needed
 ];
 
@@ -19,7 +19,7 @@ export function detectBreedFromFilename(filename) {
       milkYield: 'Not Available',
       milkAge: 'Not Available',
       generationCapacity: 'Not Available',
-      confidence: 0
+  // confidence removed
     };
   }
 
@@ -34,7 +34,7 @@ export function detectBreedFromFilename(filename) {
         milkYield: entry.milkYield,
         milkAge: entry.milkAge,
         generationCapacity: entry.generationCapacity,
-        confidence: entry.confidence
+  // confidence removed
       };
     }
   }
@@ -46,6 +46,6 @@ export function detectBreedFromFilename(filename) {
     milkYield: 'Not Available',
     milkAge: 'Not Available',
     generationCapacity: 'Not Available',
-    confidence: 50
+  // confidence removed
   };
 }
