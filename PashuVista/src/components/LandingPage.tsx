@@ -121,14 +121,14 @@ const LandingPage: React.FC = () => {
           </div>
           {/* Right Side: Carousel (smaller) */}
           <div className="w-full md:w-1/2 flex flex-col items-center mt-4 md:mt-0">
-            <div className="w-full max-w-[220px] md:max-w-[270px] aspect-[4/3] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+            <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] aspect-[4/3] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-all duration-300">
               <img
                 src={carouselImages[carouselIdx].src}
                 alt={carouselImages[carouselIdx].breed}
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 mt-5 px-5 py-3 w-full max-w-[220px] md:max-w-[270px] flex flex-col items-center transition-all duration-300">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 mt-5 px-5 py-3 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] flex flex-col items-center transition-all duration-300">
               <span className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 transition-colors duration-300">Breed</span>
               <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full font-bold text-lg transition-colors duration-300">
                 {carouselImages[carouselIdx].breed}
