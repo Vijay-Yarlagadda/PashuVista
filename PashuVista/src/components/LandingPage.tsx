@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
+
 import Sidebar from './Sidebar';
 import FindVeterinaryDoctors from './FindVeterinaryDoctors';
 import LastSection from './LastSection';
+
+const LANGUAGES = [
+  { code: 'en', name: 'English' },
+  { code: 'hi', name: 'Hindi' },
+  { code: 'te', name: 'Telugu' },
+  { code: 'ta', name: 'Tamil' },
+  { code: 'kn', name: 'Kannada' },
+  { code: 'ml', name: 'Malayalam' },
+  { code: 'gu', name: 'Gujarati' },
+  { code: 'pa', name: 'Punjabi' },
+  { code: 'bn', name: 'Bengali' },
+  { code: 'mr', name: 'Marathi' },
+  { code: 'or', name: 'Odia' },
+  { code: 'ur', name: 'Urdu' }
+];
 
 const LandingPage: React.FC = () => {
   // Use images from public/images folder
@@ -46,12 +62,27 @@ const LandingPage: React.FC = () => {
   // ...existing code...
   // Import LastSection
   // ...existing code...
+
+  // Language dropdown logic (copied from LastSection)
+  const selectRef = React.useRef<HTMLSelectElement>(null);
+  const triggerTranslation = (lang: string, retries: number = 0) => {
+    const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    } else if (retries < 10) {
+      setTimeout(() => triggerTranslation(lang, retries + 1), 300);
+    }
+  };
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    triggerTranslation(e.target.value);
+  };
+
   return (
     <>
       <div className="min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col transition-all duration-500 ease-in-out">
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         {/* Navbar */}
-        {/* ...existing code... */}
         <nav
           className={`
             fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 py-4 md:px-12 transition-all duration-300
@@ -92,6 +123,21 @@ const LandingPage: React.FC = () => {
             >
               Get Started
             </Link>
+            {/* Language Dropdown */}
+            <select
+              ref={selectRef}
+              className="ml-4 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all duration-300"
+              defaultValue="en"
+              onChange={handleLanguageChange}
+              aria-label="Select language"
+              style={{ minWidth: '110px' }}
+            >
+              {LANGUAGES.map(lang => (
+                <option key={lang.code} value={lang.code}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
           </div>
         </nav>
 

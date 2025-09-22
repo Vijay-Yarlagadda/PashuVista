@@ -210,11 +210,11 @@ const FAQPage: React.FC = () => {
     <div className="min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col transition-all duration-500 ease-in-out" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif', scrollBehavior: 'smooth' }}>
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 py-4 md:px-12 bg-white dark:bg-gray-800 rounded-b-2xl shadow-md dark:shadow-gray-900/20 transition-all duration-300" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}>
-  <span className="text-2xl font-semibold text-blue-600 dark:text-blue-400 transition-colors duration-300">PashuVista</span>
+  <span className="text-2xl font-semibold text-green-900 dark:text-green-400 transition-colors duration-300">PashuVista</span>
         <div className="hidden md:flex items-center space-x-8">
-          <a href="/#about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-lg md:text-xl transition-colors duration-300">About</a>
-          <a href="/#faq" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium underline text-lg md:text-xl transition-colors duration-300">FAQ</a>
-          <Link to="/get-started" className="bg-blue-600 dark:bg-blue-500 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300">Get Started</Link>
+          <a href="/#about" className="text-gray-700 dark:text-gray-300 hover:text-green-900 dark:hover:text-green-400 font-medium text-lg md:text-xl transition-colors duration-300">About</a>
+          <a href="/#faq" className="text-gray-700 dark:text-gray-300 hover:text-green-900 dark:hover:text-green-400 font-medium underline text-lg md:text-xl transition-colors duration-300">FAQ</a>
+          <Link to="/get-started" className="bg-green-900 dark:bg-green-700 text-white px-5 py-2 rounded-lg font-bold hover:bg-green-800 dark:hover:bg-green-600 transition-colors duration-300">Get Started</Link>
         </div>
       </nav>
 
@@ -241,8 +241,8 @@ const FAQPage: React.FC = () => {
                     onClick={() => smoothScrollTo(categoryId)}
                     className={`block w-full text-left px-4 py-3 rounded-lg font-medium text-lg tracking-tight transition-all duration-300 ${
                       isActive 
-                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 shadow-md dark:shadow-gray-900/20 transform scale-105' 
-                        : 'text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:bg-blue-50 dark:hover:bg-gray-700'
+                        ? 'bg-green-100 dark:bg-green-900 text-green-900 dark:text-green-300 shadow-md dark:shadow-gray-900/20 transform scale-105' 
+                        : 'text-green-900 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 hover:bg-green-50 dark:hover:bg-gray-700'
                     }`}
                     style={{ fontFamily: 'Google Sans, Arial, sans-serif', letterSpacing: '0.01em' }}
                     whileHover={{ scale: 1.02 }}
@@ -256,7 +256,7 @@ const FAQPage: React.FC = () => {
                       {cat.category}
                       {isActive && (
                         <m.div
-                          className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-blue-600 rounded-full"
+                          className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-green-900 rounded-full"
                           initial={{ scaleY: 0 }}
                           animate={{ scaleY: 1 }}
                           transition={{ duration: 0.3 }}
@@ -283,7 +283,7 @@ const FAQPage: React.FC = () => {
               viewport={{ once: true, margin: "-100px" }}
             >
               <m.h2 
-                className="text-4xl font-semibold text-blue-600 dark:text-blue-400 mb-8 transition-colors duration-300" 
+                className="text-4xl font-semibold text-green-900 dark:text-green-400 mb-8 transition-colors duration-300" 
                 style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -306,7 +306,7 @@ const FAQPage: React.FC = () => {
                       viewport={{ once: true }}
                     >
                       <m.button
-                        className={`w-full flex items-center justify-between px-0 py-5 text-2xl font-semibold transition-all duration-300 rounded-lg ${isOpen ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30' : 'text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700'}`}
+                        className={`w-full flex items-center justify-between px-0 py-5 text-2xl font-semibold transition-all duration-300 rounded-lg ${isOpen ? 'text-green-900 dark:text-green-400 bg-green-50 dark:bg-green-900/30' : 'text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700'}`}
                         onClick={() => setOpenIndexes({ ...openIndexes, [cat.category]: isOpen ? null : idx })}
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
@@ -323,7 +323,7 @@ const FAQPage: React.FC = () => {
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                           xmlns="http://www.w3.org/2000/svg"
-                          animate={{ rotate: isOpen ? 180 : 0, color: isOpen ? '#2563eb' : '#9ca3af' }}
+                          animate={{ rotate: isOpen ? 180 : 0, color: isOpen ? '#166534' : '#9ca3af' }}
                           transition={{ duration: 0.3 }}
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -339,7 +339,7 @@ const FAQPage: React.FC = () => {
                             className="overflow-hidden"
                           >
                             <m.div 
-                              className="text-lg text-black dark:text-gray-200 bg-white dark:bg-gray-800 rounded-lg px-4 py-4 border border-blue-100 dark:border-gray-600 mt-2 shadow-sm dark:shadow-gray-900/20 transition-all duration-300"
+                              className="text-lg text-black dark:text-gray-200 bg-white dark:bg-gray-800 rounded-lg px-4 py-4 border border-green-100 dark:border-gray-600 mt-2 shadow-sm dark:shadow-gray-900/20 transition-all duration-300"
                               style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}
                               initial={{ y: -10, opacity: 0 }}
                               animate={{ y: 0, opacity: 1 }}
