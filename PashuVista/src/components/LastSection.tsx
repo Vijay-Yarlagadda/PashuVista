@@ -62,7 +62,7 @@ const LastSection: React.FC = () => {
         </h2>
         <Link
           to="/faq"
-          className="text-xl text-[#1967d2] dark:text-gray-300 underline hover:text-green-900 dark:hover:text-green-400 mb-16 transition-colors duration-300"
+          className="text-xl text-green-900 dark:text-gray-300 underline hover:text-green-900 dark:hover:text-green-400 mb-16 transition-colors duration-300"
         >
           Check our FAQ.
         </Link>
