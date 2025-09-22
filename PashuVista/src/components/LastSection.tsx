@@ -57,12 +57,12 @@ const LastSection: React.FC = () => {
     >
       {/* Centered Heading & FAQ Link */}
       <div className="flex flex-col items-center justify-center mt-24 mb-32">
-        <h2 className="text-5xl md:text-6xl font-bold mb-8 text-black dark:text-white text-center transition-colors duration-300">
+        <h2 className="text-5xl md:text-6xl font-bold mb-8 text-green-900 dark:text-green-400 text-center transition-colors duration-300">
           More questions?
         </h2>
         <Link
           to="/faq"
-          className="text-xl text-[#1967d2] dark:text-blue-400 font-medium underline hover:text-blue-700 dark:hover:text-blue-300 mb-16 transition-colors duration-300"
+          className="text-xl text-[#1967d2] dark:text-gray-300 underline hover:text-green-900 dark:hover:text-green-400 mb-16 transition-colors duration-300"
         >
           Check our FAQ.
         </Link>
