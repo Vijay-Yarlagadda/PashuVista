@@ -7,12 +7,20 @@ const locations = [
       {
         name: 'Dr. Suresh Kumar',
         phone: '9876543210',
-        address: '123, Main Road, Kukatpally, Hyderabad'
+        address: '123, Main Road, Kukatpally, Hyderabad',
+        image: '/images/male-avatar.webp'
       },
       {
         name: 'Dr. Anita Rao',
         phone: '9123456780',
-        address: '45, Banjara Hills, Hyderabad'
+        address: '45, Banjara Hills, Hyderabad',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Rajeev Menon',
+        phone: '9012345678',
+        address: '201, Jubilee Hills, Hyderabad',
+        image: '/images/male-avatar.webp'
       }
     ]
   },
@@ -22,7 +30,14 @@ const locations = [
       {
         name: 'Dr. Ramesh Babu',
         phone: '9988776655',
-        address: '67, MG Road, Vijayawada'
+        address: '67, MG Road, Vijayawada',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Sneha Patil',
+        phone: '9876501234',
+        address: '22, Benz Circle, Vijayawada',
+        image: '/images/female-avatar.jpg'
       }
     ]
   },
@@ -32,7 +47,36 @@ const locations = [
       {
         name: 'Dr. Priya Singh',
         phone: '9001122334',
-        address: '12, Hanamkonda, Warangal'
+        address: '12, Hanamkonda, Warangal',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Manoj Reddy',
+        phone: '9090909090',
+        address: '88, Kazipet, Warangal',
+        image: '/images/male-avatar.webp'
+      }
+    ]
+  },
+  {
+    name: 'Guntur',
+    doctors: [
+      {
+        name: 'Dr. Lakshmi Narayana',
+        phone: '9123123123',
+        address: '101, Brodipet, Guntur',
+        image: '/images/male-avatar.webp'
+      }
+    ]
+  },
+  {
+    name: 'Karimnagar',
+    doctors: [
+      {
+        name: 'Dr. Shilpa Rao',
+        phone: '9345678901',
+        address: '55, Mancherial Road, Karimnagar',
+        image: '/images/female-avatar.jpg'
       }
     ]
   }
@@ -72,12 +116,17 @@ const FindVeterinaryDoctors: React.FC<FindVeterinaryDoctorsProps> = ({ standalon
         {doctors.length === 0 ? (
           <div className="text-gray-500 dark:text-gray-400 transition-colors duration-300">No doctors found for this location.</div>
         ) : (
-          <ul className="space-y-6">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {doctors.map((doc, idx) => (
-              <li key={idx} className="bg-white dark:bg-gray-800 rounded-lg shadow dark:shadow-gray-900/20 p-4 transition-all duration-300">
-                <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}>{doc.name}</div>
-                <div className="text-gray-700 dark:text-gray-300 mb-1 transition-colors duration-300">Phone: <span className="font-medium">{doc.phone}</span></div>
-                <div className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-300">{doc.address}</div>
+              <li key={idx} className="bg-white dark:bg-gray-800 rounded-lg shadow dark:shadow-gray-900/20 p-4 flex flex-col items-center transition-all duration-300">
+                <img
+                  src={doc.image}
+                  alt={doc.name}
+                  className="w-20 h-20 rounded-full object-cover mb-3 border-2 border-blue-200 dark:border-blue-900 shadow"
+                />
+                <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300 text-center" style={{ fontFamily: 'Space Grotesk, Arial, sans-serif' }}>{doc.name}</div>
+                <div className="text-gray-700 dark:text-gray-300 mb-1 transition-colors duration-300 text-center">Phone: <span className="font-medium">{doc.phone}</span></div>
+                <div className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-300 text-center">{doc.address}</div>
               </li>
             ))}
           </ul>

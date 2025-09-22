@@ -172,11 +172,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                 })}
               </ul>
             </nav>
-
-            <div className="mt-auto px-4 py-6 border-t dark:border-gray-600 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300" style={{ fontFamily: 'Google Sans, Helvetica, Arial, sans-serif', fontWeight: 500 }}>
-              <div className="font-medium">Version</div>
-              <div className="text-xs">PashuVista alpha</div>
-            </div>
           </motion.aside>
         </motion.div>
       )}
