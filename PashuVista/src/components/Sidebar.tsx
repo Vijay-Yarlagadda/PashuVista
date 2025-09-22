@@ -8,6 +8,7 @@ import {
   BookOpenIcon,
   ChatBubbleBottomCenterTextIcon,
   Bars3Icon,
+  BookOpenIcon as WikiIcon,
 } from '@heroicons/react/24/outline';
 
 type MenuItem = {
@@ -20,6 +21,7 @@ type MenuItem = {
 const menu: MenuItem[] = [
   { key: 'about', label: 'About PashuVista', to: '/', Icon: InformationCircleIcon },
   { key: 'faq', label: 'FAQ', to: '/faq', Icon: QuestionMarkCircleIcon },
+  { key: 'aboutbreeds', label: 'About Breeds', to: '/about-breeds', Icon: WikiIcon },
   { key: 'breed', label: 'Breed Recognition', to: '/get-started', Icon: CameraIcon },
   { key: 'resources', label: 'Resources', to: '/resources', Icon: BookOpenIcon },
   { key: 'feedback', label: 'Feedback', to: '/feedback', Icon: ChatBubbleBottomCenterTextIcon },
@@ -157,14 +159,16 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                       <button
                         onClick={() => onNavigate(mitem.to)}
                         className={`w-full text-left flex items-center gap-3 rounded-lg px-3 py-3 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-green-900 dark:focus:ring-green-400 ${
-                          active
+                          active && mitem.key === 'aboutbreeds'
+                            ? 'bg-green-100 dark:bg-green-900/30 text-green-900 dark:text-green-400 font-bold'
+                          : active
                             ? 'bg-green-100 dark:bg-green-900/30 text-black dark:text-green-300'
                             : 'text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white'
                         }`}
                         aria-current={active ? 'page' : undefined}
                         style={{ fontFamily: 'Google Sans, Helvetica, Arial, sans-serif', fontWeight: 500, fontSize: 14 }}
                       >
-                        <mitem.Icon className={`h-6 w-6 transition-colors duration-300 ${active ? 'text-green-900 dark:text-green-300' : 'text-gray-600 dark:text-gray-400'}`} />
+                        <mitem.Icon className={`h-6 w-6 transition-colors duration-300 ${active && mitem.key === 'aboutbreeds' ? 'text-green-900 dark:text-green-400' : active ? 'text-green-900 dark:text-green-300' : 'text-gray-600 dark:text-gray-400'}`} />
                         <span className="flex-1 text-sm md:text-base">{mitem.label}</span>
                       </button>
                     </li>

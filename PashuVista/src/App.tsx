@@ -6,6 +6,7 @@ import FAQPage from './components/FAQPage';
 import GetStartedPage from './components/GetStartedPage';
 import FindVeterinaryDoctors from './components/FindVeterinaryDoctors';
 import LastSection from './components/LastSection';
+import AboutBreeds from './components/AboutBreeds';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/faq" element={<FAQPage />} />
+                <Route path="/about-breeds" element={<AboutBreeds />} />
                 <Route path="/get-started" element={<GetStartedPage />} />
                 <Route path="/find-veterinary-doctors" element={<FindVeterinaryDoctors standalone={true} />} />
               </Routes>
