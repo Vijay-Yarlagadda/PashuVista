@@ -21,6 +21,24 @@ const locations = [
         phone: '9012345678',
         address: '201, Jubilee Hills, Hyderabad',
         image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Kavya Sharma',
+        phone: '9000000001',
+        address: '78, Ameerpet, Hyderabad',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Prakash Reddy',
+        phone: '9000000002',
+        address: '56, Secunderabad, Hyderabad',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Meena Joshi',
+        phone: '9000000003',
+        address: '34, Begumpet, Hyderabad',
+        image: '/images/female-avatar.jpg'
       }
     ]
   },
@@ -37,6 +55,30 @@ const locations = [
         name: 'Dr. Sneha Patil',
         phone: '9876501234',
         address: '22, Benz Circle, Vijayawada',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Ajay Varma',
+        phone: '9000000004',
+        address: '11, Labbipet, Vijayawada',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Sunita Rao',
+        phone: '9000000005',
+        address: '99, Governorpet, Vijayawada',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Kiran Kumar',
+        phone: '9000000006',
+        address: '88, Patamata, Vijayawada',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Ritu Sharma',
+        phone: '9000000007',
+        address: '77, Bhavanipuram, Vijayawada',
         image: '/images/female-avatar.jpg'
       }
     ]
@@ -55,6 +97,30 @@ const locations = [
         phone: '9090909090',
         address: '88, Kazipet, Warangal',
         image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Swathi Rao',
+        phone: '9000000008',
+        address: '23, Subedari, Warangal',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Arvind Kumar',
+        phone: '9000000009',
+        address: '44, Nakkalagutta, Warangal',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Deepa Rani',
+        phone: '9000000010',
+        address: '55, LB Nagar, Warangal',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Sandeep Goud',
+        phone: '9000000011',
+        address: '66, Fort Road, Warangal',
+        image: '/images/male-avatar.webp'
       }
     ]
   },
@@ -65,6 +131,36 @@ const locations = [
         name: 'Dr. Lakshmi Narayana',
         phone: '9123123123',
         address: '101, Brodipet, Guntur',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Ramesh Chandra',
+        phone: '9000000012',
+        address: '202, Arundelpet, Guntur',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Sushma Devi',
+        phone: '9000000013',
+        address: '303, Lakshmipuram, Guntur',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Praveen Kumar',
+        phone: '9000000014',
+        address: '404, Brindavan Gardens, Guntur',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Neha Reddy',
+        phone: '9000000015',
+        address: '505, Pattabhipuram, Guntur',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Ajay Singh',
+        phone: '9000000016',
+        address: '606, Nallapadu, Guntur',
         image: '/images/male-avatar.webp'
       }
     ]
@@ -77,6 +173,36 @@ const locations = [
         phone: '9345678901',
         address: '55, Mancherial Road, Karimnagar',
         image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Mahesh Gupta',
+        phone: '9000000017',
+        address: '77, Ramnagar, Karimnagar',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Pooja Jain',
+        phone: '9000000018',
+        address: '88, Mankammathota, Karimnagar',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Vinay Kumar',
+        phone: '9000000019',
+        address: '99, Kothirampur, Karimnagar',
+        image: '/images/male-avatar.webp'
+      },
+      {
+        name: 'Dr. Anjali Mehta',
+        phone: '9000000020',
+        address: '111, Saraswathinagar, Karimnagar',
+        image: '/images/female-avatar.jpg'
+      },
+      {
+        name: 'Dr. Rakesh Yadav',
+        phone: '9000000021',
+        address: '222, Vavilalapally, Karimnagar',
+        image: '/images/male-avatar.webp'
       }
     ]
   }
