@@ -127,7 +127,18 @@ const GetStartedPage: React.FC = () => {
   const canSend = !!image;
 
   return (
-    <div className="min-h-screen bg-[#fafbfc] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col transition-all duration-500 ease-in-out">
+    <div
+      className="min-h-screen flex flex-col transition-all duration-500 ease-in-out"
+      style={{
+        backgroundImage: `url('/images/background.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#fafbfc',
+      }}
+    >
+      {/* Dark mode overlay for readability */}
+      <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'linear-gradient(135deg, #181c23 0%, #232b38 100%)', opacity: 0.7, display: 'none' }} id="dark-bg-overlay" />
       {/* Header */}
       <header className="w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
