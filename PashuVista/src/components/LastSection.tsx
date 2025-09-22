@@ -55,11 +55,30 @@ const LastSection: React.FC = () => {
       className="relative w-full min-h-screen bg-[#fafbfc] dark:bg-[#192233] flex flex-col justify-center items-center transition-all duration-500 ease-in-out"
       style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif', marginTop: 0, marginBottom: 0 }}
     >
-      {/* Centered Heading & FAQ Link */}
-      <div className="flex flex-col items-center justify-center mt-24 mb-32">
+      {/* Centered Heading, Sample FAQs & FAQ Link */}
+      <div className="flex flex-col items-center justify-center mt-24 mb-32 w-full max-w-2xl">
         <h2 className="text-5xl md:text-6xl font-bold mb-8 text-green-900 dark:text-green-400 text-center transition-colors duration-300">
           More questions?
         </h2>
+        {/* Sample FAQ questions */}
+        <div className="w-full mb-8">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-4">
+            <h3 className="text-lg font-semibold text-green-900 dark:text-green-400 mb-2">What is this project?</h3>
+            <p className="text-gray-700 dark:text-gray-300">This is an AI-powered system that identifies Indian bovines by type (cattle or buffalo) and breed using deep learning models.</p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-4">
+            <h3 className="text-lg font-semibold text-green-900 dark:text-green-400 mb-2">How is the dataset prepared?</h3>
+            <p className="text-gray-700 dark:text-gray-300">Images are collected breed-wise and organized into folders, with careful cleaning to remove duplicates or unclear photos.</p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-4">
+            <h3 className="text-lg font-semibold text-green-900 dark:text-green-400 mb-2">Which CNN architectures are used?</h3>
+            <p className="text-gray-700 dark:text-gray-300">ResNet50, InceptionV3, and EfficientNet are commonly used as base models for transfer learning.</p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-4">
+            <h3 className="text-lg font-semibold text-green-900 dark:text-green-400 mb-2">How is the model saved?</h3>
+            <p className="text-gray-700 dark:text-gray-300">The model is saved in HDF5 or ONNX format for easy reuse.</p>
+          </div>
+        </div>
         <Link
           to="/faq"
           className="text-xl text-green-900 dark:text-gray-300 underline hover:text-green-900 dark:hover:text-green-400 mb-16 transition-colors duration-300"
