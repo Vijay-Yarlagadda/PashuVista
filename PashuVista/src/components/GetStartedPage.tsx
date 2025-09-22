@@ -133,12 +133,12 @@ const GetStartedPage: React.FC = () => {
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link
             to="/"
-            className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+      className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-green-900 dark:hover:text-green-400 transition-colors"
           >
             <ArrowLeftIcon className="w-5 h-5" />
             <span className="font-medium">Back to Home</span>
           </Link>
-          <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400">PashuVista</h1>
+          <h1 className="text-2xl font-bold text-green-900 dark:text-green-400">PashuVista</h1>
           <div className="w-24"></div>
         </div>
       </header>
@@ -151,7 +151,7 @@ const GetStartedPage: React.FC = () => {
             {messages.map((msg, idx) =>
               msg.type === 'image' ? (
                 <div key={idx} className="flex justify-end">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-xl p-2 max-w-[70%] shadow">
+                  <div className="bg-green-100 dark:bg-green-900 rounded-xl p-2 max-w-[70%] shadow">
                     <img
                       src={msg.image}
                       alt="User upload"
@@ -162,7 +162,7 @@ const GetStartedPage: React.FC = () => {
               ) : (
                 <div key={idx} className="flex justify-end">
                   <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-3 max-w-[70%] shadow text-right">
-                    <span className="font-bold text-blue-600 dark:text-blue-400">
+                    <span className="font-bold text-green-900 dark:text-green-400">
                       {msg.breed}
                     </span>
                     {/* confidence removed */}
@@ -180,17 +180,17 @@ const GetStartedPage: React.FC = () => {
 
           <div className="flex gap-8 justify-center items-center w-full mb-6">
             <button
-              className="flex flex-col items-center justify-center p-4 rounded-xl bg-blue-50 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-gray-600 transition-colors shadow"
+              className="flex flex-col items-center justify-center p-4 rounded-xl bg-green-50 dark:bg-gray-700 hover:bg-green-100 dark:hover:bg-gray-600 transition-colors shadow"
               onClick={handleCamera}
             >
-              <CameraIcon className="w-10 h-10 text-blue-500 mb-2" />
+              <CameraIcon className="w-10 h-10 text-green-900 dark:text-green-400 mb-2" />
               <span className="text-xs text-gray-700 dark:text-gray-300">Camera</span>
             </button>
             <button
-              className="flex flex-col items-center justify-center p-4 rounded-xl bg-blue-50 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-gray-600 transition-colors shadow"
+              className="flex flex-col items-center justify-center p-4 rounded-xl bg-green-50 dark:bg-gray-700 hover:bg-green-100 dark:hover:bg-gray-600 transition-colors shadow"
               onClick={handleGallery}
             >
-              <PhotoIcon className="w-10 h-10 text-blue-500 mb-2" />
+              <PhotoIcon className="w-10 h-10 text-green-900 dark:text-green-400 mb-2" />
               <span className="text-xs text-gray-700 dark:text-gray-300">Gallery</span>
             </button>
             <input
@@ -214,7 +214,7 @@ const GetStartedPage: React.FC = () => {
                 />
                 <div className="flex gap-4">
                   <button
-                    className="px-6 py-2 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-600"
+                    className="px-6 py-2 rounded-lg bg-green-900 text-white font-bold hover:bg-green-800"
                     onClick={handleCapture}
                   >
                     Capture
@@ -252,7 +252,7 @@ const GetStartedPage: React.FC = () => {
           {/* Send Button */}
           {canSend && (
             <button
-              className="w-full py-3 rounded-xl bg-blue-500 dark:bg-blue-600 text-white font-bold text-lg hover:bg-blue-600 dark:hover:bg-blue-700"
+              className="w-full py-3 rounded-xl bg-green-900 dark:bg-green-700 text-white font-bold text-lg hover:bg-green-800 dark:hover:bg-green-600"
               onClick={handleSend}
             >
               Send

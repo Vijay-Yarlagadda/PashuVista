@@ -76,19 +76,19 @@ const LandingPage: React.FC = () => {
                 <Bars3Icon className="h-7 w-7 text-black dark:text-white transition-all" />
               </button>
             ) : (
-              <span className="text-3xl font-semibold text-blue-600 dark:text-blue-400 transition-all">PashuVista</span>
+                <span className="text-3xl font-semibold text-green-900 dark:text-green-400 transition-all">PashuVista</span>
             )}
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium underline text-lg md:text-xl transition-colors duration-300" onClick={e => {
+            <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-green-900 dark:hover:text-green-400 font-medium underline text-lg md:text-xl transition-colors duration-300" onClick={e => {
               e.preventDefault();
               const el = document.getElementById('about');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}>About</a>
-            <Link to="/faq#FAQSection" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-lg md:text-xl transition-colors duration-300">FAQ</Link>
+            <Link to="/faq#FAQSection" className="text-gray-700 dark:text-gray-300 hover:text-green-900 dark:hover:text-green-400 font-medium text-lg md:text-xl transition-colors duration-300">FAQ</Link>
             <Link
-              to="/get-started"
-              className="bg-blue-600 dark:bg-blue-500 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300"
+                to="/get-started"
+                className="bg-green-900 dark:bg-green-700 text-white px-5 py-2 rounded-lg font-bold hover:bg-green-800 dark:hover:bg-green-600 transition-colors duration-300"
             >
               Get Started
             </Link>
@@ -100,11 +100,11 @@ const LandingPage: React.FC = () => {
           {/* Left Side */}
           <div className="w-full md:w-1/2 flex flex-col items-start md:pr-12 mt-48">
             <h1
-              className="text-5xl md:text-9xl font-bold text-blue-600 dark:text-blue-400 mb-4 leading-tight transition-colors duration-300"
+              className="text-5xl md:text-9xl font-bold mb-4 leading-tight transition-colors duration-300"
               style={{ fontFamily: 'BoingSemiBold, Helvetica, Arial, sans-serif' }}
             >
-              <span className="block md:inline">Pashu</span>
-              <span className="block md:inline">Vista</span>
+              <span className="inline text-green-900 dark:text-green-400">Pashu</span>
+              <span className="inline text-green-900 dark:text-green-400 ml-2">Vista</span>
             </h1>
             <h2 className="text-2xl md:text-3xl text-gray-700 dark:text-gray-200 mb-4 font-bold transition-colors duration-300">
               Identify cattle breeds instantly using just an image.
@@ -113,8 +113,8 @@ const LandingPage: React.FC = () => {
               Train and use AI models to recognize different cattle breeds with ease. Farmers, vets, and researchers can get reliable breed identification without technical knowledge. Upload a photo and let PashuVista do the rest — fast, accurate, and farmer-friendly.
             </p>
             <Link
-              to="/get-started"
-              className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300 mb-6 md:mb-0"
+                to="/get-started"
+                className="bg-green-900 dark:bg-green-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-800 dark:hover:bg-green-600 transition-colors duration-300 mb-6 md:mb-0"
             >
               Get Started
             </Link>
@@ -130,7 +130,7 @@ const LandingPage: React.FC = () => {
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 mt-5 px-5 py-3 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] flex flex-col items-center transition-all duration-300">
               <span className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 transition-colors duration-300">Breed</span>
-              <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full font-bold text-lg transition-colors duration-300">
+                <span className="bg-green-100 dark:bg-green-900 text-green-900 dark:text-green-300 px-4 py-2 rounded-full font-bold text-lg transition-colors duration-300">
                 {carouselImages[carouselIdx].breed}
               </span>
             </div>
