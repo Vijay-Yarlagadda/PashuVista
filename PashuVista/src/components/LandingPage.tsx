@@ -97,15 +97,28 @@ const LandingPage: React.FC = () => {
         >
           <div className="flex items-center">
             {!scrolled ? (
-              <button
-                type="button"
-                aria-label="Open menu"
+              <div
                 onClick={() => setSidebarOpen(true)}
-                className="p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-transparent"
-                style={{ background: 'none', border: 'none' }}
+                style={{
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  width: '170px', // Approximate width of 'PashuVista' in nav
+                  minHeight: '44px',
+                  paddingLeft: '2px',
+                  paddingRight: '2px',
+                  background: 'none',
+                  border: 'none',
+                  outline: 'none',
+                  boxShadow: 'none',
+                }}
+                tabIndex={0}
+                aria-label="Open menu"
+                role="button"
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setSidebarOpen(true); }}
               >
                 <Bars3Icon className="h-7 w-7 text-black dark:text-white transition-all" />
-              </button>
+              </div>
             ) : (
                 <span className="text-3xl font-semibold text-green-900 dark:text-green-400 transition-all">PashuVista</span>
             )}
